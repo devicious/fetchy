@@ -8,6 +8,12 @@
   "devDependencies": {
     "ts-loader": "^9.2.3",
     "typescript": "^4.3.5",
-    "webpack-cli": "^4.7.2"
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack serve --open",
+    "watch": "webpack --watch"
   }
 }
