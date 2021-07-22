@@ -1,5 +1,5 @@
 {
-  "name": "Fetch",
+  "name": "fetch",
   "version": "1.0.0",
   "dependencies": {
     "html-webpack-plugin": "^5.3.2",
