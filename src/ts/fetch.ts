@@ -1,3 +1,13 @@
+/*
+* Fetchy Library
+* Created from Ivan Sollima 03/08/2021
+*
+*
+* */
+
+
+import MD5 from "crypto-js/md5";
+
 interface FetchyConfig {
     url: string,
     method: string,
@@ -9,32 +19,17 @@ interface FetchyConfig {
     format: string,
     credentials?: RequestCredentials,
     mode?: RequestMode,
-    token?: boolean,
-    cache?: boolean
+    cache?: boolean,
+    expiry?: number,
+}
+
+interface CacheConfig {
+    uid: string,
+    storage: string,
+    retries: number
 }
 
 class Fetchy {
-
-    private config: FetchyConfig = {
-        url: '',
-        timeout: 10000,
-        retry: 0,
-        format: "json",
-        method: 'GET'
-    };
-
-    private writable = true;
-
-    private updateConfig(config) {
-        if (this.writable) {
-            this.config = {
-                ...this.config,
-                ...config
-            }
-        } else {
-            console.log("Configuration is not editable anymore");
-        }
-    }
 
     constructor(url) {
 
@@ -51,8 +46,35 @@ class Fetchy {
             format: "json",
             credentials: "same-origin",
             mode: 'cors',
-            token: false,
-            cache: false
+            cache: false,
+            expiry: 0,
+        }
+
+        this.cacheStorage = JSON.parse(sessionStorage.getItem(this.cacheConfig.uid) || "{}");
+    }
+
+    private config: FetchyConfig = {
+        url: '',
+        timeout: 10000,
+        retry: 0,
+        format: "json",
+        method: 'GET'
+    };
+
+    private cacheStorage = {};
+
+    private cacheConfig: CacheConfig = {uid: "_cacheResponseData", storage: "memory", retries: 40};
+
+    private writable = true;
+
+    private updateConfig(config) {
+        if (this.writable) {
+            this.config = {
+                ...this.config,
+                ...config
+            }
+        } else {
+            console.log("Configuration is not editable anymore");
         }
     }
 
@@ -65,69 +87,86 @@ class Fetchy {
     private do() {
         this.writable = false;
         return this.attachSelf(new Promise((resolve, reject) => {
-            const {timeout, retry, delay} = this.config;
 
-            const handleTimeout = () => {
-                return new Promise((resolve, reject) => {
-                    let timer;
-                    if (timeout) {
-                        timer = setTimeout(() => {
-                            reject("Timeout");
-                        }, timeout);
-                    }
-                    this.call()
-                        .then(response => resolve(response))
-                        .catch(error => reject(error))
-                        .finally(() => {
-                            timer && clearTimeout(timer);
-                        });
-                })
-            };
+            if (!this.config.cache || (this.config.cache && !this.isCached())) {
 
-            const handleRetries = (promise) => {
-                return new Promise((resolve, reject) => {
-                    retryHelper(promise, retry);
+                const {timeout, retry, delay} = this.config;
 
-                    function retryHelper(promise, counter) {
-                        promise()
-                            .then(data => {
-                                resolve(data);
-                            })
-                            .catch(err => {
-                                if (counter > 1) {
-                                    setTimeout(() => {
-                                        retryHelper(promise, --counter);
-                                    }, delay);
-                                } else {
-                                    reject(err);
-                                }
+                const handleTimeout = () => {
+                    return new Promise((resolve, reject) => {
+                        let timer;
+                        if (timeout) {
+                            timer = setTimeout(() => {
+                                reject("Timeout");
+                            }, timeout);
+                        }
+                        this.call()
+                            .then(response => resolve(response))
+                            .catch(error => reject(error))
+                            .finally(() => {
+                                timer && clearTimeout(timer);
                             });
-                    }
-                });
+                    })
+                };
+
+                const handleRetries = (promise) => {
+                    return new Promise((resolve, reject) => {
+                        retryHelper(promise, retry);
+
+                        function retryHelper(promise, counter) {
+                            promise()
+                                .then(data => {
+                                    resolve(data);
+                                })
+                                .catch(err => {
+                                    if (counter > 1) {
+                                        setTimeout(() => {
+                                            retryHelper(promise, --counter);
+                                        }, delay);
+                                    } else {
+                                        reject(err);
+                                    }
+                                });
+                        }
+                    });
+                }
+
+                handleRetries(handleTimeout)
+                    .then(response => {
+                        resolve(this.formatResponse(response));
+                    })
+                    .catch(error => {
+                        reject(error)
+                    });
+
+            } else {
+                resolve(this.getCached());
             }
 
-            handleRetries(handleTimeout)
-                .then(response => {
-                    resolve(this.formatResponse(response));
-                })
-                .catch(error => {
-                    debugger;
-                    reject(error)
-                });
+        }).then((response) => {
+            if (this.config.cache) {
+                this.setCached(response);
+            }
+
+            return response;
         }));
     }
 
     private call() {
-        const {method, headers, credentials, mode} = this.config;
+        const {method, headers, credentials, mode, data} = this.config;
+
+        const body = typeof data !== 'string' ? JSON.stringify(data) : data;
+
         return fetch(this.config.url, {
             method,
             headers,
             credentials,
+            body,
             mode,
-        })
+        });
     }
 
-    private formatResponse (metaResponse) {
+    private formatResponse(metaResponse) {
         if (metaResponse[this.config.format]) {
             return metaResponse[this.config.format]()
                 .then((response) => {
@@ -234,6 +273,19 @@ class Fetchy {
         return this;
     }
 
+    data(data) {
+        if(this.config.method !== 'GET') {
+            this.config.data = {
+                ...this.config.data,
+                data
+            };
+        } else {
+            throw 'You cannot specify a body with GET calls.'
+        }
+
+        return this;
+    }
+
     credentials(credentials: string) {
         const allowed_credentials = ['omit', 'same-origin', 'include'];
         if (credentials && allowed_credentials.indexOf(credentials) >= 0) {
@@ -260,20 +312,70 @@ class Fetchy {
         return this;
     }
 
-    token(enable: Boolean) {
-        this.updateConfig({
-            token: !!enable
-        })
+    clone() {
+        const url = this.config.url;
+        const instance = new Fetchy(url);
+        instance.override(this.config);
 
+        return instance;
+    }
+
+    override(config) {
+        if (this.writable) {
+            this.config = {
+                ...this.config,
+                ...config
+            }
+        }
         return this;
     }
 
-    cache(enable: Boolean) {
+    cache(enable: boolean) {
         this.updateConfig({
             cache: !!enable
         })
 
         return this;
+    }
+
+    isCached() {
+
+        return true;
+    }
+
+    refreshStorage() {
+        this.cacheStorage = JSON.parse(sessionStorage.getItem(this.cacheConfig.uid) || "{}");
+    }
+
+    getCached() {
+        this.refreshStorage();
+        const hash = this.getCacheHash();
+    }
+
+    setCached(data) {
+        this.cacheStorage = JSON.parse(sessionStorage.getItem(this.cacheConfig.uid) || "{}");
+    }
+
+    getCacheHash() {
+        const {
+            url,
+            method,
+            data,
+            format,
+            credentials,
+            mode,
+        } = this.config;
+
+        const preHash = JSON.stringify({
+            url,
+            method,
+            data,
+            format,
+            credentials,
+            mode,
+        });
+
+        return MD5(preHash.replace(/[^\w]/gi, ''));
     }
 
     then(fn) {
@@ -298,16 +400,28 @@ class Fetchy {
 
 }
 
-const Fetch = new Fetchy("https://6102cc7e79ed680017482315.mockapi.io/api/v1/users");
+const Authors = new Fetchy("https://6102cc7e79ed680017482315.mockapi.io/api/v1/users")
+    .method('POST')
+    .cache(false);
 
 let result =
-    Fetch
-        .timeout(1)
-        .retry(3, 2000)
-        .method('POST')
-        .then((response) => {
-            debugger;
-            console.log(response);
+    Authors
+        .data({
+            abc: '12312',
+            cdd: '123123'
         })
+        .then((data) => {
+            console.log('POST', data);
+        });
 
+
+let result2 =
+    Authors
+        .data({
+            123: 'aabd',
+            456: 'asd'
+        })
+        .then((data) => {
+            console.log('POST', data);
+        });
 
