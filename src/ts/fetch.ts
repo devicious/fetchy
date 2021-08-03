@@ -146,7 +146,7 @@ class Fetchy {
                         reject(error)
                     });
 
-                if(cacheEnabled) {
+                if (cacheEnabled) {
                     this.setQueue();
                 }
 
@@ -155,10 +155,9 @@ class Fetchy {
             }
 
         }).then((response) => {
-            if (cacheEnabled) {
+            if (cacheEnabled && !this.isCached()) {
                 this.storeCached(response);
             }
-
             return response;
         }));
     }
@@ -391,8 +390,8 @@ class Fetchy {
             this.refreshCacheStorage();
             const hash = this.getCacheHash();
             const item = this.cacheStorage[hash];
-            if(item || this.isInQueue()) {
-                if(item) {
+            if (item || this.isInQueue()) {
+                if (item) {
                     resolve(item.data);
                 } else {
                     let tries = 0;
@@ -400,10 +399,10 @@ class Fetchy {
                     const handler = this;
                     const interval = setInterval(() => {
                         const item = handler.cacheStorage[hash];
-                        if(item) {
+                        if (item) {
                             resolve(item.data)
                             clearInterval(interval);
-                        } else if(tries < maxTries) {
+                        } else if (tries < maxTries) {
                             tries++;
                         } else {
                             clearInterval(interval);
@@ -417,12 +416,12 @@ class Fetchy {
         });
     }
 
-    private storeCached(data) {
+    private storeCached(response) {
         this.refreshCacheStorage();
         const hash = this.getCacheHash();
         this.cacheStorage[hash] = {
             expiry: this.config.expiry,
-            data,
+            data: response,
         };
         sessionStorage.setItem(this.config._cacheUID, JSON.stringify(this.cacheStorage));
         delete window[this.config._cacheQueueUID][hash];
