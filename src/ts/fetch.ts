@@ -6,7 +6,7 @@
 * */
 
 
-import MD5 from "crypto-js/md5";
+import * as MD5 from 'crypto-js/md5';
 
 interface FetchyConfig {
     url: string,
@@ -20,16 +20,30 @@ interface FetchyConfig {
     credentials?: RequestCredentials,
     mode?: RequestMode,
     cache?: boolean,
+    id?: string,
     expiry?: number,
-}
+    _cacheUID: string,
+    _cacheQueueUID: string
+    _cacheQueueRetries: number
 
-interface CacheConfig {
-    uid: string,
-    storage: string,
-    retries: number
 }
 
 class Fetchy {
+
+    private config: FetchyConfig = {
+        url: '',
+        timeout: 10000,
+        retry: 0,
+        format: "json",
+        method: 'GET',
+        _cacheUID: "_cacheResponseData",
+        _cacheQueueUID: "_cacheResponseQueue",
+        _cacheQueueRetries: 40
+    };
+
+    private cacheStorage = {};
+
+    private writable = true;
 
     constructor(url) {
 
@@ -47,28 +61,19 @@ class Fetchy {
             credentials: "same-origin",
             mode: 'cors',
             cache: false,
+            id: '',
             expiry: 0,
+            _cacheUID: "_cacheResponseData",
+            _cacheQueueUID: "_cacheResponseQueue",
+            _cacheQueueRetries: 40
         }
 
-        this.cacheStorage = JSON.parse(sessionStorage.getItem(this.cacheConfig.uid) || "{}");
+        this.refreshCacheStorage();
+
     }
 
-    private config: FetchyConfig = {
-        url: '',
-        timeout: 10000,
-        retry: 0,
-        format: "json",
-        method: 'GET'
-    };
-
-    private cacheStorage = {};
-
-    private cacheConfig: CacheConfig = {uid: "_cacheResponseData", storage: "memory", retries: 40};
-
-    private writable = true;
-
-    private updateConfig(config) {
-        if (this.writable) {
+    private updateConfig(config, force = false) {
+        if (this.writable || force) {
             this.config = {
                 ...this.config,
                 ...config
@@ -86,9 +91,11 @@ class Fetchy {
 
     private do() {
         this.writable = false;
+        const cacheEnabled = this.config.cache
+
         return this.attachSelf(new Promise((resolve, reject) => {
 
-            if (!this.config.cache || (this.config.cache && !this.isCached())) {
+            if (!cacheEnabled || (cacheEnabled && !this.isCached())) {
 
                 const {timeout, retry, delay} = this.config;
 
@@ -139,13 +146,17 @@ class Fetchy {
                         reject(error)
                     });
 
+                if(cacheEnabled) {
+                    this.setQueue();
+                }
+
             } else {
-                resolve(this.getCached());
+                resolve(this.retrieveCached());
             }
 
         }).then((response) => {
-            if (this.config.cache) {
-                this.setCached(response);
+            if (cacheEnabled) {
+                this.storeCached(response);
             }
 
             return response;
@@ -274,13 +285,24 @@ class Fetchy {
     }
 
     data(data) {
-        if(this.config.method !== 'GET') {
-            this.config.data = {
-                ...this.config.data,
+        if (this.config.method !== 'GET') {
+            this.updateConfig({
                 data
-            };
+            }, true);
         } else {
             throw 'You cannot specify a body with GET calls.'
+        }
+
+        return this;
+    }
+
+    id(id) {
+        if (id) {
+            this.updateConfig({
+                id
+            });
+        } else {
+            throw 'ID must be a non empty string value'
         }
 
         return this;
@@ -338,25 +360,76 @@ class Fetchy {
         return this;
     }
 
-    isCached() {
+    expiry(minutes) {
+        if (minutes && minutes >= 1) {
+            const now = new Date().getTime();
+            this.updateConfig({
+                expiry: now + (minutes * 60000),
+            })
+        } else {
+            throw "Expiry cannot be less than one minute."
+        }
 
-        return true;
+        return this;
     }
 
-    refreshStorage() {
-        this.cacheStorage = JSON.parse(sessionStorage.getItem(this.cacheConfig.uid) || "{}");
-    }
-
-    getCached() {
-        this.refreshStorage();
+    private isCached() {
+        this.refreshCacheStorage();
         const hash = this.getCacheHash();
+        const item = this.cacheStorage[hash];
+        const now = new Date().getTime();
+        return !!item && (!item.expiry || item.expiry > now);
     }
 
-    setCached(data) {
-        this.cacheStorage = JSON.parse(sessionStorage.getItem(this.cacheConfig.uid) || "{}");
+    private refreshCacheStorage() {
+        this.cacheStorage = JSON.parse(sessionStorage.getItem(this.config._cacheUID) || "{}");
+        window[this.config._cacheQueueUID] = window[this.config._cacheQueueUID] || {};
     }
 
-    getCacheHash() {
+    private retrieveCached() {
+        return new Promise((resolve, reject) => {
+            this.refreshCacheStorage();
+            const hash = this.getCacheHash();
+            const item = this.cacheStorage[hash];
+            if(item || this.isInQueue()) {
+                if(item) {
+                    resolve(item.data);
+                } else {
+                    let tries = 0;
+                    const maxTries = this.config._cacheQueueRetries;
+                    const handler = this;
+                    const interval = setInterval(() => {
+                        const item = handler.cacheStorage[hash];
+                        if(item) {
+                            resolve(item.data)
+                            clearInterval(interval);
+                        } else if(tries < maxTries) {
+                            tries++;
+                        } else {
+                            clearInterval(interval);
+                            reject("Unexpected timeout error during cache retrieval")
+                        }
+                    }, 350);
+                }
+            } else {
+                reject("Unexpected error during cache retrieval");
+            }
+        });
+    }
+
+    private storeCached(data) {
+        this.refreshCacheStorage();
+        const hash = this.getCacheHash();
+        this.cacheStorage[hash] = {
+            expiry: this.config.expiry,
+            data,
+        };
+        sessionStorage.setItem(this.config._cacheUID, JSON.stringify(this.cacheStorage));
+        delete window[this.config._cacheQueueUID][hash];
+
+    }
+
+    private getCacheHash() {
         const {
             url,
             method,
@@ -364,6 +437,7 @@ class Fetchy {
             format,
             credentials,
             mode,
+            id,
         } = this.config;
 
         const preHash = JSON.stringify({
@@ -375,7 +449,17 @@ class Fetchy {
             mode,
         });
 
-        return MD5(preHash.replace(/[^\w]/gi, ''));
+        return `${id}-${MD5(preHash.replace(/[^\w]/gi, '')).toString()}`;
+    }
+
+    private setQueue() {
+        const hash = this.getCacheHash();
+        window[this.config._cacheQueueUID][hash] = true;
+    }
+
+    private isInQueue() {
+        const hash = this.getCacheHash();
+        return !!window[this.config._cacheQueueUID][hash];
     }
 
     then(fn) {
@@ -402,24 +486,15 @@ class Fetchy {
 
 const Authors = new Fetchy("https://6102cc7e79ed680017482315.mockapi.io/api/v1/users")
     .method('POST')
-    .cache(false);
+    .cache(true)
+    .id('articles')
+    .expiry(1)
 
 let result =
     Authors
         .data({
             abc: '12312',
             cdd: '123123'
-        })
-        .then((data) => {
-            console.log('POST', data);
-        });
-
-
-let result2 =
-    Authors
-        .data({
-            123: 'aabd',
-            456: 'asd'
         })
         .then((data) => {
             console.log('POST', data);
