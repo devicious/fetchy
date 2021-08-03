@@ -28,6 +28,11 @@ interface FetchyConfig {
 
 }
 
+/**
+ * Represents a Fetchy instance built upon a mandatory url parameter.
+ * @constructor
+ * @param {string} url - This parameter is required
+ */
 class Fetchy {
 
     private config: FetchyConfig = {

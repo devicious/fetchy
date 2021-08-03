@@ -1,0 +1,7 @@
+{
+  "entryPoints": [
+    "src/ts/fetch.ts"
+  ],
+  "out": "docs",
+  "exclude": "**/node_modules/**/*.*"
+}
