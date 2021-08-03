@@ -72,8 +72,8 @@ class Fetchy {
 
     }
 
-    private updateConfig(config, force = false) {
-        if (this.writable || force) {
+    private updateConfig(config) {
+        if (this.writable) {
             this.config = {
                 ...this.config,
                 ...config
@@ -95,7 +95,7 @@ class Fetchy {
 
         return this.attachSelf(new Promise((resolve, reject) => {
 
-            if (!cacheEnabled || (cacheEnabled && !this.isCached())) {
+            if (!cacheEnabled || (cacheEnabled && !this.isCached() && !this.isInQueue())) {
 
                 const {timeout, retry, delay} = this.config;
 
@@ -284,15 +284,16 @@ class Fetchy {
     }
 
     data(data) {
+        const clone = this.clone();
         if (this.config.method !== 'GET') {
-            this.updateConfig({
+            clone.updateConfig({
                 data
-            }, true);
+            });
         } else {
             throw 'You cannot specify a body with GET calls.'
         }
 
-        return this;
+        return clone;
     }
 
     id(id) {
@@ -398,6 +399,7 @@ class Fetchy {
                     const maxTries = this.config._cacheQueueRetries;
                     const handler = this;
                     const interval = setInterval(() => {
+                        handler.refreshCacheStorage();
                         const item = handler.cacheStorage[hash];
                         if (item) {
                             resolve(item.data)
@@ -496,6 +498,17 @@ let result =
             cdd: '123123'
         })
         .then((data) => {
-            console.log('POST', data);
+            console.log('1', data);
+        });
+
+
+let result2 =
+    Authors
+        .data({
+            abc: '12312',
+            cdd: '123123'
+        })
+        .then((data) => {
+            console.log('2', data);
         });
 
