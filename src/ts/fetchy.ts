@@ -9,23 +9,73 @@
 import * as MD5 from 'crypto-js/md5';
 
 interface FetchyConfig {
+    /**
+     * Contains the url that needs to be fetched
+     */
     url: string,
+    /**
+     * Contains the method used to fetch the data. Allowed values: 'GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'. <br> Defaults to GET
+     */
     method: string,
+    /**
+     * Contains the headers used to perform the request. Allowed values: Object, Array, String <br> Defaults to setup Accept and Content-Type
+     */
     headers?: Headers,
+    /**
+     * Contains the payload of the request. Allowed values: Object, Array, String (Only for non GET requests)
+     */
     data?: any,
+    /**
+     * Contains the timeout used to abort the request in case it takes too much time expressed in seconds. Must be equal/greater than 1. <br> Defaults to 30 seconds
+     */
     timeout: number,
+    /**
+     * Contains the number of retries to be performed in case of error, before considering the request failed. <br> Defaults to 0
+     */
     retry: number,
+    /**
+     * Contains the delay between each retry operation. Expressed in ms. <br> Defaults to 0
+     */
     delay?: number,
+    /**
+     * Defines the expected response type. Allowed values: 'json', 'text', 'blob'. <br> Defaults to 'json'
+     */
     format: string,
+    /**
+     * Contains the request credential format. Allowed values: 'omit', 'same-origin', 'include'. <br> Defaults to 'same-origin'
+     */
     credentials?: RequestCredentials,
+    /**
+     * Contains the request mode. Allowed values: 'cors', 'same-origin', 'no-cors'. <br> Defaults to 'cors'
+     */
     mode?: RequestMode,
+    /**
+     * Enable or Disable automatic caching functionality for the requests. <br> Defaults to false (Disabled).
+     */
     cache?: boolean,
+    /**
+     * Contains an id that should be unique for each request resource type, useful to distinguish its cached responses. Useful only in conjunction with caching.
+     */
     id?: string,
+    /**
+     * Contains the timing of validity of cached request for this specific resource, identified by it's id (if present), and the combination of instance parameters. Expressed in minutes. <br> Defaults to 0 (Disabled).
+     */
     expiry?: number,
+    /**
+     * Internal use only.
+     * @internal
+     */
     _cacheUID: string,
+    /**
+     * Internal use only.
+     * @internal
+     */
     _cacheQueueUID: string
+    /**
+     * Internal use only.
+     * @internal
+     */
     _cacheQueueRetries: number
-
 }
 
 /**
@@ -48,7 +98,7 @@ class Fetchy {
      */
     private config: FetchyConfig = {
         url: '',
-        timeout: 10000,
+        timeout: 30000,
         retry: 0,
         format: "json",
         method: 'GET',
@@ -299,7 +349,7 @@ class Fetchy {
     /**
      * Allows to set headers for the fetch call.
      *
-     * @param {any} headers - Allowed values Array, Object
+     * @param {Headers} headers - Allowed values Array, Object
      * @returns the Fetchy class instance
      */
     headers(headers: any) {
@@ -428,7 +478,7 @@ class Fetchy {
     /**
      * Sets a mode for the current Fetch instance to handle CORS issues
      *
-     * @param {string} mode - 'cors', 'same-origin', 'no-cors'
+     * @param {string} mode - Allowed values: 'cors', 'same-origin', 'no-cors'
      * @returns the Fetchy class instance
      */
     mode(mode: string) {
