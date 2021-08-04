@@ -1,6 +1,6 @@
 /*
 * Fetchy Library
-* Created from Ivan Sollima 03/08/2021
+* Author: Ivan Sollima 03/08/2021
 *
 *
 * */
@@ -11,54 +11,67 @@ import * as MD5 from 'crypto-js/md5';
 interface FetchyConfig {
     /**
      * Contains the url that needs to be fetched. <b>Mandatory. Not editable</b>
+     * @request
      */
     url: string,
     /**
      * Contains the method used to fetch the data. Allowed values: 'GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'. <br> Defaults to <b>GET</b>
+     * @request
      */
     method: string,
     /**
      * Contains the headers used to perform the request. Allowed values: Object, Array, String <br> Defaults to setup Accept and Content-Type
+     * @request
      */
     headers?: Headers,
     /**
      * Contains the payload of the request. Allowed values: Object, Array, String (Only for non GET requests)
+     * @request
      */
     data?: any,
     /**
      * Contains the timeout used to abort the request in case it takes too much time expressed in seconds. Must be equal/greater than 1. <br> Defaults to <b>30 seconds</b>
+     * @errorHandling
      */
     timeout: number,
     /**
      * Contains the number of retries to be performed in case of error, before considering the request failed. <br> Defaults to <b>0</b>
+     * @errorHandling
      */
     retry: number,
     /**
      * Contains the delay between each retry operation. Expressed in ms. <br> Defaults to <b>0</b>
+     * @errorHandling
      */
     delay?: number,
     /**
      * Defines the expected response type. Allowed values: 'json', 'text', 'blob'. <br> Defaults to <b>'json'</b>
+     * @errorHandling
      */
     format: string,
     /**
      * Contains the request credential format. Allowed values: 'omit', 'same-origin', 'include'. <br> Defaults to <b>'same-origin'</b>
+     * @request
      */
     credentials?: RequestCredentials,
     /**
      * Contains the request mode. Allowed values: 'cors', 'same-origin', 'no-cors'. <br> Defaults to <b>'cors'</b>
+     * @request
      */
     mode?: RequestMode,
     /**
      * Enable or Disable automatic caching functionality for the requests. <br> Defaults to <b>false</b> (Disabled).
+     * @request
      */
     cache?: boolean,
     /**
      * Contains an id that should be unique for each request resource type, useful to distinguish its cached responses. Useful only in conjunction with caching.
+     * @cache
      */
     id?: string,
     /**
      * Contains the timing of validity of cached request for this specific resource, identified by it's id (if present), and the combination of instance parameters. Expressed in minutes. <br> Defaults to 0 (Disabled).
+     * @cache
      */
     expiry?: number,
     /**
@@ -143,7 +156,7 @@ class Fetchy {
     /**
      * This variable handles the internal caching storage.
      *
-     * @category Internal
+     * @internal
      */
     private cacheStorage = {};
 
@@ -326,6 +339,7 @@ class Fetchy {
     /**
      * Resets the internal state to the default values.
      *
+     * @config
      * @returns the current *Fetchy* instance
      */
     reset() {
@@ -353,6 +367,7 @@ class Fetchy {
     /**
      * Allows to set a method for the fetch call.
      *
+     * @request
      * @param {string} method - Allowed values: 'GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'
      * @returns the Fetchy class instance
      */
@@ -371,7 +386,7 @@ class Fetchy {
 
     /**
      * Allows to set headers for the fetch call.
-     *
+     * @request
      * @param {Headers} headers - Allowed values Array, Object
      * @returns the Fetchy class instance
      */
