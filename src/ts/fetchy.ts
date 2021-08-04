@@ -339,7 +339,7 @@ class Fetchy {
     /**
      * Resets the internal state to the default values.
      *
-     * @config
+     * @utility
      * @returns the current *Fetchy* instance
      */
     reset() {
@@ -402,7 +402,7 @@ class Fetchy {
 
     /**
      * Allows to set fetch timeout in seconds.
-     *
+     * @errorHandling
      * @param {number} seconds - Must be a value equal or greater than 1
      * @returns the Fetchy class instance
      */
@@ -420,7 +420,7 @@ class Fetchy {
 
     /**
      * Allows to set fetch expected response format
-     *
+     * @request
      * @param {string} format - Allowed values: 'json', 'text', 'blob'
      * @returns the Fetchy class instance
      */
@@ -439,7 +439,7 @@ class Fetchy {
 
     /**
      * Allows to set automatic retries in case of fetch failure.
-     *
+     * @errorHandling
      * @param {number} times - Number of times to retry before considering failed the request
      * @param {number} delayMs - Time to wait between each try, expressed in ms.
      * @returns the Fetchy class instance
@@ -459,7 +459,7 @@ class Fetchy {
 
     /**
      * Allows to set request payload.
-     *
+     * @request
      * @param {any} data - Allowed formats: Object, Array, String.
      * @returns *a new clone* of Fetchy class instance that inherits all previous configurations.
      */
@@ -478,7 +478,7 @@ class Fetchy {
 
     /**
      * Sets a unique id for the current Fetch instance, allowing more clear and debug friendly caching
-     *
+     * @cache
      * @param {string} id - Allowed values: Any unique string
      * @returns the Fetchy class instance
      */
@@ -496,7 +496,7 @@ class Fetchy {
 
     /**
      * Sets the credential mode for the current Fetch instance.
-     *
+     * @request
      * @param {string} credentials - Allowed values: 'omit', 'same-origin', 'include'
      * @returns the Fetchy class instance
      */
@@ -515,7 +515,7 @@ class Fetchy {
 
     /**
      * Sets a mode for the current Fetch instance to handle CORS issues
-     *
+     * @request
      * @param {string} mode - Allowed values: 'cors', 'same-origin', 'no-cors'
      * @returns the Fetchy class instance
      */
@@ -534,7 +534,7 @@ class Fetchy {
 
     /**
      * Clones the current instance into a new one, allowing for configuration changes without affecting the original instance.
-     *
+     * @utility
      * @returns *a new clone* of Fetchy class instance that inherits all previous configurations.
      */
     clone() {
@@ -566,7 +566,7 @@ class Fetchy {
      * Enable or disable automatic caching for the current Fetchy instance. <br>
      * Caching is performed automatically when enabled based on the current set of parameters, and automatically handling configuration changes. <br>
      * Any change in the configuration or data payload will generate new calls instead of fetching from the cache.
-     *
+     * @cache
      * @param {boolean} enable - true | false
      * @returns the Fetchy class instance
      */
@@ -580,7 +580,7 @@ class Fetchy {
 
     /**
      * Sets a time in minutes after which any cached request will be discarded and substituted with a fresh data fetch.
-     *
+     * @cache
      * @param {number} minutes - Timing expressed in minutes
      * @returns the Fetchy class instance
      */
@@ -711,7 +711,7 @@ class Fetchy {
     /**
      * Triggers the data fetch and returns the final payload. <br>
      * After this method is invoked is no longer possible to change this instance configuration without cloning it.
-     *
+     * @request
      * @param {Function} fn - A callback function that is invoked with the result of the fetch in case of success
      * @returns *a mutated version* of Fetchy class instance that inherits all the properties of a *Promise*.
      */
@@ -723,7 +723,7 @@ class Fetchy {
     /**
      * Triggers the data fetch and returns the final payload. <br>
      * After this method is invoked is no longer possible to change this instance configuration without cloning it.
-     *
+     * @request
      * @param {Function} fn - A callback function that is invoked with the result of the fetch in case of error
      * @returns *a mutated version* of Fetchy class instance that inherits all the properties of a *Promise*.
      */
@@ -735,7 +735,7 @@ class Fetchy {
     /**
      * Triggers the data fetch and returns the final payload. <br>
      * After this method is invoked is no longer possible to change this instance configuration without cloning it.
-     *
+     * @request
      * @param {Function} fn - A callback function that is invoked with the result of the fetch in either case
      * @returns *a mutated version* of Fetchy class instance that inherits all the properties of a *Promise*.
      */
