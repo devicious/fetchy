@@ -7,11 +7,8 @@
     "webpack": "^5.46.0"
   },
   "devDependencies": {
-    "igniteui-typedoc-theme": "^3.0.2",
     "ts-loader": "^9.2.3",
     "typedoc": "^0.5.10",
-    "typedoc-clarity-theme": "^1.1.0",
-    "typedoc-webpack-plugin": "^1.1.4",
     "typescript": "^4.3.5",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
