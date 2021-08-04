@@ -92,10 +92,10 @@ interface FetchyConfig {
 }
 
 /**
- * ### The *Fetchy* class comes as an helper that represent a configurable link to a remote resource.
+ * ### The *Fetchy* class represent an handy and configurable helper that allows to easily interact with remote resources.
  *
- * Any instance can be configured in many different aspects while enforcing correct configuration for every specific case. <br>
- * Leveraging this model you can obtain pre-configured instances from where you can fetch as many times as you want with automatic error handling, caching, timeouts, etc.
+ * Any instance can be configured in many different aspects while enforcing use of correct configuration. <br>
+ * Leveraging its functionalities it's easy to generate pre-configured instances of any given remote resource, and easily query them with cool features like: automatic error handling, caching, timeouts, etc.
  *
  * ### Example:
  * ```
