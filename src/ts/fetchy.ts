@@ -29,12 +29,23 @@ interface FetchyConfig {
 }
 
 /**
- * Represents a Fetchy instance built upon a mandatory url parameter.
- * @constructor
+ * ### The *Fetchy* class comes as an helper that represent a configurable link to a remote resource.
+ *
+ * Any instance can be configured in many different aspects while enforcing correct configuration for every specific case. <br>
+ * Leveraging this model you can obtain pre-configured instances from where you can fetch as many times as you want with automatic error handling, caching, timeouts, etc.
+ *
+ * @constructor {class} You must use the new keyword to instantiate Fetchy
  * @param {string} url - This parameter is required
+ * @returns a new instance of Fetchy class
  */
 class Fetchy {
 
+    /**
+     * This variable represents the internal state of a Fetchy instance.
+     * It mutates while you configure your instance, and it's inherited from its child.
+     *
+     * @category Internal Configuration
+     */
     private config: FetchyConfig = {
         url: '',
         timeout: 10000,
@@ -46,11 +57,22 @@ class Fetchy {
         _cacheQueueRetries: 40
     };
 
+    /**
+     * This variable handles the internal caching storage.
+     *
+     * @category Internal
+     */
     private cacheStorage = {};
 
+    /**
+     * The properties of a Fetchy instance are mutable up until the first fetch. <br>
+     * From that moment only the payload data can be mutated, in order to prevent consistency issues.
+     *
+     * @category Internal
+     */
     private writable = true;
 
-    constructor(url) {
+    constructor(url: string) {
 
         this.config = {
             url,
@@ -77,23 +99,19 @@ class Fetchy {
 
     }
 
-    private updateConfig(config) {
-        if (this.writable) {
-            this.config = {
-                ...this.config,
-                ...config
-            }
-        } else {
-            console.log("Configuration is not editable anymore");
-        }
-    }
 
+    /**
+     * @internal
+     */
     private attachSelf(response: any) {
         const source = Object.getPrototypeOf(response);
         Object.setPrototypeOf(source, this);
         return response;
     }
 
+    /**
+     * @internal
+     */
     private do() {
         this.writable = false;
         const cacheEnabled = this.config.cache
@@ -167,6 +185,9 @@ class Fetchy {
         }));
     }
 
+    /**
+     * @internal
+     */
     private call() {
         const {method, headers, credentials, mode, data} = this.config;
 
@@ -181,6 +202,9 @@ class Fetchy {
         });
     }
 
+    /**
+     * @internal
+     */
     private formatResponse(metaResponse) {
         if (metaResponse[this.config.format]) {
             return metaResponse[this.config.format]()
@@ -205,9 +229,15 @@ class Fetchy {
         }
     }
 
+
+    /**
+     * Resets the internal state to the default values.
+     *
+     * @returns the current *Fetchy* instance
+     */
     reset() {
 
-        this.updateConfig({
+        this.override({
             method: 'GET',
             data: undefined,
             headers: new Headers({
@@ -230,7 +260,7 @@ class Fetchy {
     method(method: string) {
         const allowed_methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'];
         if (method && allowed_methods.indexOf(method) >= 0) {
-            this.updateConfig({
+            this.override({
                 method,
             })
         } else {
@@ -242,7 +272,7 @@ class Fetchy {
 
     headers(headers: any) {
         if (headers) {
-            this.updateConfig({
+            this.override({
                 headers: new Headers(headers)
             })
         }
@@ -252,7 +282,7 @@ class Fetchy {
 
     timeout(seconds: number) {
         if (seconds && seconds >= 1) {
-            this.updateConfig({
+            this.override({
                 timeout: (seconds * 1000),
             })
         } else {
@@ -265,7 +295,7 @@ class Fetchy {
     format(format: string) {
         const allowed_formats = ['json', 'text', 'blob'];
         if (format && allowed_formats.indexOf(format) >= 0) {
-            this.updateConfig({
+            this.override({
                 format,
             })
         } else {
@@ -277,7 +307,7 @@ class Fetchy {
 
     retry(times: number, delayMs: number = 0) {
         if (times && times >= 0) {
-            this.updateConfig({
+            this.override({
                 retry: times,
                 delay: delayMs,
             })
@@ -291,7 +321,7 @@ class Fetchy {
     data(data) {
         const clone = this.clone();
         if (this.config.method !== 'GET') {
-            clone.updateConfig({
+            clone.override({
                 data
             });
         } else {
@@ -303,7 +333,7 @@ class Fetchy {
 
     id(id) {
         if (id) {
-            this.updateConfig({
+            this.override({
                 id
             });
         } else {
@@ -316,7 +346,7 @@ class Fetchy {
     credentials(credentials: string) {
         const allowed_credentials = ['omit', 'same-origin', 'include'];
         if (credentials && allowed_credentials.indexOf(credentials) >= 0) {
-            this.updateConfig({
+            this.override({
                 credentials,
             })
         } else {
@@ -329,7 +359,7 @@ class Fetchy {
     mode(mode: string) {
         const allowed_modes = ['cors', 'same-origin', 'no-cors'];
         if (mode && allowed_modes.indexOf(mode) >= 0) {
-            this.updateConfig({
+            this.override({
                 mode,
             })
         } else {
@@ -353,12 +383,14 @@ class Fetchy {
                 ...this.config,
                 ...config
             }
+        } else {
+            throw "Configuration is not editable anymore"
         }
         return this;
     }
 
     cache(enable: boolean) {
-        this.updateConfig({
+        this.override({
             cache: !!enable
         })
 
@@ -368,7 +400,7 @@ class Fetchy {
     expiry(minutes) {
         if (minutes && minutes >= 1) {
             const now = new Date().getTime();
-            this.updateConfig({
+            this.override({
                 expiry: now + (minutes * 60000),
             })
         } else {

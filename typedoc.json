@@ -1,7 +1,1938 @@
 {
-  "entryPoints": [
-    "src/ts/fetch.ts"
-  ],
-  "out": "docs",
-  "exclude": "**/node_modules/**/*.*"
+	"id": 0,
+	"name": "fetch",
+	"kind": 0,
+	"flags": {},
+	"children": [
+		{
+			"id": 1,
+			"name": "\"fetch\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true
+			},
+			"originalName": "/Users/i.sollima/Projects/Fetch/src/ts/fetch.ts",
+			"children": [
+				{
+					"id": 19,
+					"name": "Fetchy",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {},
+					"comment": {
+						"shortText": "Represents a Fetchy instance built upon a mandatory url parameter.",
+						"tags": [
+							{
+								"tag": "constructor",
+								"text": ""
+							},
+							{
+								"tag": "param",
+								"text": "This parameter is required\n",
+								"param": "url"
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 32,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 33,
+									"name": "new Fetchy",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 34,
+											"name": "url",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "Fetchy",
+										"id": 19
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 51,
+									"character": 28
+								}
+							]
+						},
+						{
+							"id": 29,
+							"name": "cacheStorage",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPrivate": true
+							},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 49,
+									"character": 24
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 30,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {}
+								}
+							}
+						},
+						{
+							"id": 31,
+							"name": "writable",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPrivate": true
+							},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 51,
+									"character": 20
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							},
+							"defaultValue": "true"
+						},
+						{
+							"id": 38,
+							"name": "attachSelf",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true
+							},
+							"signatures": [
+								{
+									"id": 39,
+									"name": "attachSelf",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 40,
+											"name": "response",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "any"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 91,
+									"character": 22
+								}
+							]
+						},
+						{
+							"id": 83,
+							"name": "cache",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 84,
+									"name": "cache",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 85,
+											"name": "enable",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "boolean"
+											}
+										}
+									],
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 360,
+									"character": 9
+								}
+							]
+						},
+						{
+							"id": 43,
+							"name": "call",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true
+							},
+							"signatures": [
+								{
+									"id": 44,
+									"name": "call",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "Promise",
+										"typeArguments": [
+											{
+												"type": "reference",
+												"name": "Response"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 170,
+									"character": 16
+								}
+							]
+						},
+						{
+							"id": 107,
+							"name": "catch",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 108,
+									"name": "catch",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 109,
+											"name": "fn",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "any"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 476,
+									"character": 9
+								}
+							]
+						},
+						{
+							"id": 78,
+							"name": "clone",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 79,
+									"name": "clone",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "Fetchy",
+										"id": 19
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 342,
+									"character": 9
+								}
+							]
+						},
+						{
+							"id": 72,
+							"name": "credentials",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 73,
+									"name": "credentials",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 74,
+											"name": "credentials",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 316,
+									"character": 15
+								}
+							]
+						},
+						{
+							"id": 66,
+							"name": "data",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 67,
+									"name": "data",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 68,
+											"name": "data",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "Fetchy",
+										"id": 19
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 291,
+									"character": 8
+								}
+							]
+						},
+						{
+							"id": 113,
+							"name": "debug",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 114,
+									"name": "debug",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 486,
+									"character": 9
+								}
+							]
+						},
+						{
+							"id": 41,
+							"name": "do",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true
+							},
+							"signatures": [
+								{
+									"id": 42,
+									"name": "do",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"type": {
+										"type": "instrinct",
+										"name": "any"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 97,
+									"character": 14
+								}
+							]
+						},
+						{
+							"id": 86,
+							"name": "expiry",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 87,
+									"name": "expiry",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 88,
+											"name": "minutes",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 368,
+									"character": 10
+								}
+							]
+						},
+						{
+							"id": 110,
+							"name": "finally",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 111,
+									"name": "finally",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 112,
+											"name": "fn",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "any"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 481,
+									"character": 11
+								}
+							]
+						},
+						{
+							"id": 59,
+							"name": "format",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 60,
+									"name": "format",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 61,
+											"name": "format",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 265,
+									"character": 10
+								}
+							]
+						},
+						{
+							"id": 45,
+							"name": "formatResponse",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true
+							},
+							"signatures": [
+								{
+									"id": 46,
+									"name": "formatResponse",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 47,
+											"name": "metaResponse",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "any"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 184,
+									"character": 26
+								}
+							]
+						},
+						{
+							"id": 98,
+							"name": "getCacheHash",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true
+							},
+							"signatures": [
+								{
+									"id": 99,
+									"name": "getCacheHash",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"type": {
+										"type": "instrinct",
+										"name": "string"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 438,
+									"character": 24
+								}
+							]
+						},
+						{
+							"id": 53,
+							"name": "headers",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 54,
+									"name": "headers",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 55,
+											"name": "headers",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 243,
+									"character": 11
+								}
+							]
+						},
+						{
+							"id": 69,
+							"name": "id",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 70,
+									"name": "id",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 71,
+											"name": "id",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 304,
+									"character": 6
+								}
+							]
+						},
+						{
+							"id": 89,
+							"name": "isCached",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true
+							},
+							"signatures": [
+								{
+									"id": 90,
+									"name": "isCached",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 381,
+									"character": 20
+								}
+							]
+						},
+						{
+							"id": 102,
+							"name": "isInQueue",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true
+							},
+							"signatures": [
+								{
+									"id": 103,
+									"name": "isInQueue",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 466,
+									"character": 21
+								}
+							]
+						},
+						{
+							"id": 50,
+							"name": "method",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 51,
+									"name": "method",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 52,
+											"name": "method",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 230,
+									"character": 10
+								}
+							]
+						},
+						{
+							"id": 75,
+							"name": "mode",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 76,
+									"name": "mode",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 77,
+											"name": "mode",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 329,
+									"character": 8
+								}
+							]
+						},
+						{
+							"id": 80,
+							"name": "override",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 81,
+									"name": "override",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 82,
+											"name": "config",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 350,
+									"character": 12
+								}
+							]
+						},
+						{
+							"id": 91,
+							"name": "refreshCacheStorage",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true
+							},
+							"signatures": [
+								{
+									"id": 92,
+									"name": "refreshCacheStorage",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"type": {
+										"type": "instrinct",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 389,
+									"character": 31
+								}
+							]
+						},
+						{
+							"id": 48,
+							"name": "reset",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 49,
+									"name": "reset",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 208,
+									"character": 9
+								}
+							]
+						},
+						{
+							"id": 93,
+							"name": "retrieveCached",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true
+							},
+							"signatures": [
+								{
+									"id": 94,
+									"name": "retrieveCached",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "Promise",
+										"typeArguments": [
+											{
+												"type": "instrinct",
+												"name": "Object"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 394,
+									"character": 26
+								}
+							]
+						},
+						{
+							"id": 62,
+							"name": "retry",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 63,
+									"name": "retry",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 64,
+											"name": "times",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "number"
+											}
+										},
+										{
+											"id": 65,
+											"name": "delayMs",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "number"
+											},
+											"defaultValue": "0"
+										}
+									],
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 278,
+									"character": 9
+								}
+							]
+						},
+						{
+							"id": 100,
+							"name": "setQueue",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true
+							},
+							"signatures": [
+								{
+									"id": 101,
+									"name": "setQueue",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"type": {
+										"type": "instrinct",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 461,
+									"character": 20
+								}
+							]
+						},
+						{
+							"id": 95,
+							"name": "storeCached",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true
+							},
+							"signatures": [
+								{
+									"id": 96,
+									"name": "storeCached",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 97,
+											"name": "response",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 426,
+									"character": 23
+								}
+							]
+						},
+						{
+							"id": 104,
+							"name": "then",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 105,
+									"name": "then",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 106,
+											"name": "fn",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "any"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 471,
+									"character": 8
+								}
+							]
+						},
+						{
+							"id": 56,
+							"name": "timeout",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 57,
+									"name": "timeout",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 58,
+											"name": "seconds",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "number"
+											}
+										}
+									],
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 253,
+									"character": 11
+								}
+							]
+						},
+						{
+							"id": 35,
+							"name": "updateConfig",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true
+							},
+							"signatures": [
+								{
+									"id": 36,
+									"name": "updateConfig",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 37,
+											"name": "config",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 80,
+									"character": 24
+								}
+							]
+						},
+						{
+							"id": 20,
+							"name": "config",
+							"kind": 2097152,
+							"kindString": "Object literal",
+							"flags": {
+								"isPrivate": true
+							},
+							"children": [
+								{
+									"id": 28,
+									"name": "_cacheQueueRetries",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "fetch.ts",
+											"line": 46,
+											"character": 26
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									},
+									"defaultValue": "40"
+								},
+								{
+									"id": 27,
+									"name": "_cacheQueueUID",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "fetch.ts",
+											"line": 45,
+											"character": 22
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "string"
+									},
+									"defaultValue": "\"_cacheResponseQueue\""
+								},
+								{
+									"id": 26,
+									"name": "_cacheUID",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "fetch.ts",
+											"line": 44,
+											"character": 17
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "string"
+									},
+									"defaultValue": "\"_cacheResponseData\""
+								},
+								{
+									"id": 24,
+									"name": "format",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "fetch.ts",
+											"line": 42,
+											"character": 14
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "string"
+									},
+									"defaultValue": "\"json\""
+								},
+								{
+									"id": 25,
+									"name": "method",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "fetch.ts",
+											"line": 43,
+											"character": 14
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "string"
+									},
+									"defaultValue": "\"GET\""
+								},
+								{
+									"id": 23,
+									"name": "retry",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "fetch.ts",
+											"line": 41,
+											"character": 13
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								},
+								{
+									"id": 22,
+									"name": "timeout",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "fetch.ts",
+											"line": 40,
+											"character": 15
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									},
+									"defaultValue": "10000"
+								},
+								{
+									"id": 21,
+									"name": "url",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "fetch.ts",
+											"line": 39,
+											"character": 11
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "string"
+									},
+									"defaultValue": "\"\""
+								}
+							],
+							"groups": [
+								{
+									"title": "Variables",
+									"kind": 32,
+									"children": [
+										28,
+										27,
+										26,
+										24,
+										25,
+										23,
+										22,
+										21
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 38,
+									"character": 18
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "object"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								32
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								29,
+								31
+							]
+						},
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								38,
+								83,
+								43,
+								107,
+								78,
+								72,
+								66,
+								113,
+								41,
+								86,
+								110,
+								59,
+								45,
+								98,
+								53,
+								69,
+								89,
+								102,
+								50,
+								75,
+								80,
+								91,
+								48,
+								93,
+								62,
+								100,
+								95,
+								104,
+								56,
+								35
+							]
+						},
+						{
+							"title": "Object literals",
+							"kind": 2097152,
+							"children": [
+								20
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "fetch.ts",
+							"line": 36,
+							"character": 12
+						}
+					]
+				},
+				{
+					"id": 2,
+					"name": "FetchyConfig",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {},
+					"children": [
+						{
+							"id": 18,
+							"name": "_cacheQueueRetries",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 27,
+									"character": 22
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							}
+						},
+						{
+							"id": 17,
+							"name": "_cacheQueueUID",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 26,
+									"character": 18
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						},
+						{
+							"id": 16,
+							"name": "_cacheUID",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 25,
+									"character": 13
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						},
+						{
+							"id": 13,
+							"name": "cache",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 22,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						},
+						{
+							"id": 11,
+							"name": "credentials",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 20,
+									"character": 15
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "RequestCredentials"
+							}
+						},
+						{
+							"id": 6,
+							"name": "data",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 15,
+									"character": 8
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "any"
+							}
+						},
+						{
+							"id": 9,
+							"name": "delay",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 18,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							}
+						},
+						{
+							"id": 15,
+							"name": "expiry",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 24,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							}
+						},
+						{
+							"id": 10,
+							"name": "format",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 19,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						},
+						{
+							"id": 5,
+							"name": "headers",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 14,
+									"character": 11
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Headers"
+							}
+						},
+						{
+							"id": 14,
+							"name": "id",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 23,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						},
+						{
+							"id": 4,
+							"name": "method",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 13,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						},
+						{
+							"id": 12,
+							"name": "mode",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 21,
+									"character": 8
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "RequestMode"
+							}
+						},
+						{
+							"id": 8,
+							"name": "retry",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 17,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							}
+						},
+						{
+							"id": 7,
+							"name": "timeout",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 16,
+									"character": 11
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							}
+						},
+						{
+							"id": 3,
+							"name": "url",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "fetch.ts",
+									"line": 12,
+									"character": 7
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								18,
+								17,
+								16,
+								13,
+								11,
+								6,
+								9,
+								15,
+								10,
+								5,
+								14,
+								4,
+								12,
+								8,
+								7,
+								3
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "fetch.ts",
+							"line": 11,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 115,
+					"name": "Authors",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "fetch.ts",
+							"line": 493,
+							"character": 13
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Fetchy",
+						"id": 19
+					},
+					"defaultValue": " new Fetchy(\"https://6102cc7e79ed680017482315.mockapi.io/api/v1/users\")\n    .method('POST')\n    .cache(true)\n    .id('articles')\n    .expiry(1)"
+				},
+				{
+					"id": 116,
+					"name": "result",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "fetch.ts",
+							"line": 499,
+							"character": 10
+						}
+					],
+					"type": {
+						"type": "instrinct",
+						"name": "any"
+					},
+					"defaultValue": "\n    Authors\n        .data({\n            abc: '12312',\n            cdd: '123123'\n        })\n        .then((data) => {\n            console.log('1', data);\n        })"
+				},
+				{
+					"id": 117,
+					"name": "result2",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "fetch.ts",
+							"line": 510,
+							"character": 11
+						}
+					],
+					"type": {
+						"type": "instrinct",
+						"name": "any"
+					},
+					"defaultValue": "\n    Authors\n        .data({\n            abc: '12312',\n            cdd: '123123'\n        })\n        .then((data) => {\n            console.log('2', data);\n        })"
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"kind": 128,
+					"children": [
+						19
+					]
+				},
+				{
+					"title": "Interfaces",
+					"kind": 256,
+					"children": [
+						2
+					]
+				},
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						115,
+						116,
+						117
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "fetch.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "External modules",
+			"kind": 1,
+			"children": [
+				1
+			]
+		}
+	]
 }
