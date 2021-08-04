@@ -10,11 +10,11 @@ import * as MD5 from 'crypto-js/md5';
 
 interface FetchyConfig {
     /**
-     * Contains the url that needs to be fetched
+     * Contains the url that needs to be fetched. <b>Mandatory. Not editable</b>
      */
     url: string,
     /**
-     * Contains the method used to fetch the data. Allowed values: 'GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'. <br> Defaults to GET
+     * Contains the method used to fetch the data. Allowed values: 'GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'. <br> Defaults to <b>GET</b>
      */
     method: string,
     /**
@@ -26,31 +26,31 @@ interface FetchyConfig {
      */
     data?: any,
     /**
-     * Contains the timeout used to abort the request in case it takes too much time expressed in seconds. Must be equal/greater than 1. <br> Defaults to 30 seconds
+     * Contains the timeout used to abort the request in case it takes too much time expressed in seconds. Must be equal/greater than 1. <br> Defaults to <b>30 seconds</b>
      */
     timeout: number,
     /**
-     * Contains the number of retries to be performed in case of error, before considering the request failed. <br> Defaults to 0
+     * Contains the number of retries to be performed in case of error, before considering the request failed. <br> Defaults to <b>0</b>
      */
     retry: number,
     /**
-     * Contains the delay between each retry operation. Expressed in ms. <br> Defaults to 0
+     * Contains the delay between each retry operation. Expressed in ms. <br> Defaults to <b>0</b>
      */
     delay?: number,
     /**
-     * Defines the expected response type. Allowed values: 'json', 'text', 'blob'. <br> Defaults to 'json'
+     * Defines the expected response type. Allowed values: 'json', 'text', 'blob'. <br> Defaults to <b>'json'</b>
      */
     format: string,
     /**
-     * Contains the request credential format. Allowed values: 'omit', 'same-origin', 'include'. <br> Defaults to 'same-origin'
+     * Contains the request credential format. Allowed values: 'omit', 'same-origin', 'include'. <br> Defaults to <b>'same-origin'</b>
      */
     credentials?: RequestCredentials,
     /**
-     * Contains the request mode. Allowed values: 'cors', 'same-origin', 'no-cors'. <br> Defaults to 'cors'
+     * Contains the request mode. Allowed values: 'cors', 'same-origin', 'no-cors'. <br> Defaults to <b>'cors'</b>
      */
     mode?: RequestMode,
     /**
-     * Enable or Disable automatic caching functionality for the requests. <br> Defaults to false (Disabled).
+     * Enable or Disable automatic caching functionality for the requests. <br> Defaults to <b>false</b> (Disabled).
      */
     cache?: boolean,
     /**
@@ -83,6 +83,39 @@ interface FetchyConfig {
  *
  * Any instance can be configured in many different aspects while enforcing correct configuration for every specific case. <br>
  * Leveraging this model you can obtain pre-configured instances from where you can fetch as many times as you want with automatic error handling, caching, timeouts, etc.
+ *
+ * ### Example:
+ * ```
+ * //Define and configure a new instance of a Fetchy Class
+ * const Authors = new Fetchy("/api/v1/authors")
+ *      .method('POST')
+ *      .cache(true)
+ *      .id('articles')
+ *      .expiry(1);
+ *
+ * //Further edit the configuration and fire the request.
+ * Authors
+ *      .data({
+ *             parameter1: 'value1',
+ *             parameter2: 'value2'
+ *      })
+ *      .then((results) => {
+ *         console.log(results);
+ *      });
+ *
+ * //Execute another call with different parameters (caching won't affect the results since the payload has changed)
+ * Authors
+ *      .data({
+ *             parameter4: 123,
+ *             parameter6: false
+ *      })
+ *      .then((results) => {
+ *         console.log(results);
+ *      })
+ *      .catch((error) => {
+ *         console.log(error);
+ *      });
+ * ```
  *
  * @constructor {class} You must use the new keyword to instantiate Fetchy
  * @param {string} url - This parameter is required
@@ -123,23 +156,13 @@ class Fetchy {
     private writable = true;
 
     /**
-     * Fetchy instantiation and use example:
+     * ### Basic usage (GET):
      *
      * ```
-     * const Authors = new Fetchy("/api/v1/authors")
-     *      .method('POST')
-     *      .cache(true)
-     *      .id('articles')
-     *      .expiry(1);
-     *
-     * Authors
-     *      .data({
-     *             parameter1: 'value1',
-     *             parameter2: 'value2'
-     *      })
-     *      .then((results) => {
-     *         console.log(results);
-     *      });
+     * const Resource = new Fetchy("/api/v1/:endpoint");
+     * Resource.then((data) => {
+     *     //...
+     * });
      * ```
      */
     constructor(url: string) {

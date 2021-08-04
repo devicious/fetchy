@@ -57,10 +57,6 @@
 						<div class="globalnav__mobile-menu">
 							<a class="globalnav__menu-toggle mchNoDecorate" href="#"> <span>Menu</span> </a>
 						</div>
-						<!-- Global Search Toggle -->
-						<div class="globalnav__search-toggle">
-							<div class="globalnav__search-close"><i> </i></div>
-						</div>
 						<!-- Menu -->
 						<div class="globalnav__overlay">&nbsp;</div>
 					</div>
@@ -248,6 +244,37 @@
 					</div>
 					<p>Any instance can be configured in many different aspects while enforcing correct configuration for every specific case. <br>
 					Leveraging this model you can obtain pre-configured instances from where you can fetch as many times as you want with automatic error handling, caching, timeouts, etc.</p>
+					<h3 id="example-">Example:</h3>
+					<pre><code><span class="hljs-comment">//Define and configure a new instance of a Fetchy Class</span>
+<span class="hljs-keyword">const</span> Authors = <span class="hljs-keyword">new</span> Fetchy(<span class="hljs-string">"/api/v1/authors"</span>)
+     .method(<span class="hljs-string">'POST'</span>)
+     .cache(<span class="hljs-literal">true</span>)
+     .id(<span class="hljs-string">'articles'</span>)
+     .expiry(<span class="hljs-number">1</span>);
+
+<span class="hljs-comment">//Further edit the configuration and fire the request.</span>
+Authors
+     .data({
+            <span class="hljs-attr">parameter1</span>: <span class="hljs-string">'value1'</span>,
+            <span class="hljs-attr">parameter2</span>: <span class="hljs-string">'value2'</span>
+     })
+     .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(results);
+     });
+
+<span class="hljs-comment">//Execute another call with different parameters (caching won't affect the results since the payload has changed)</span>
+Authors
+     .data({
+            <span class="hljs-attr">parameter4</span>: <span class="hljs-number">123</span>,
+            <span class="hljs-attr">parameter6</span>: <span class="hljs-literal">false</span>
+     })
+     .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(results);
+     })
+     .catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(error);
+     });
+</code></pre>
 					<dl class="tsd-comment-tags">
 						<div>
 							<dt>@constructor</dt>
@@ -346,28 +373,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L123">fetchy.ts:123</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L156">fetchy.ts:156</a>
 									</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Fetchy instantiation and use example:</p>
+									<h3 id="basic-usage-get-">Basic usage (GET):</h3>
 								</div>
-								<pre><code>const Authors = <span class="hljs-keyword">new</span> Fetchy(<span class="hljs-string">"/api/v1/authors"</span>)
-     .method(<span class="hljs-string">'POST'</span>)
-     .cache(<span class="hljs-literal">true</span>)
-     .id(<span class="hljs-string">'articles'</span>)
-     .expiry(<span class="hljs-number">1</span>);
-
-Authors
-     .data({
-            parameter1: <span class="hljs-string">'value1'</span>,
-            parameter2: <span class="hljs-string">'value2'</span>
-     })
-     .<span class="hljs-keyword">then</span>(<span class="hljs-function"><span class="hljs-params">(results)</span> =&gt;</span> {
-        <span class="hljs-built_in">console</span>.log(results);
-     });
+								<pre><code><span class="hljs-keyword">const</span> Resource = <span class="hljs-keyword">new</span> Fetchy(<span class="hljs-string">"/api/v1/:endpoint"</span>);
+Resource.then(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> {
+    <span class="hljs-comment">//...</span>
+});
 </code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -389,7 +406,7 @@ Authors
 					<div class="tsd-signature tsd-kind-icon">cache<wbr>Storage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L115">fetchy.ts:115</a>
+							<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L148">fetchy.ts:148</a>
 							</li>
 						</ul>
 					</aside>
@@ -417,7 +434,7 @@ Authors
 					<div class="tsd-signature tsd-kind-icon">writable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L123">fetchy.ts:123</a>
+							<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L156">fetchy.ts:156</a>
 							</li>
 						</ul>
 					</aside>
@@ -448,7 +465,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L176">fetchy.ts:176</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L199">fetchy.ts:199</a>
 									</li>
 								</ul>
 							</aside>
@@ -480,7 +497,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L535">fetchy.ts:535</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L558">fetchy.ts:558</a>
 									</li>
 								</ul>
 							</aside>
@@ -515,7 +532,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L261">fetchy.ts:261</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L284">fetchy.ts:284</a>
 									</li>
 								</ul>
 							</aside>
@@ -541,7 +558,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L692">fetchy.ts:692</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L715">fetchy.ts:715</a>
 									</li>
 								</ul>
 							</aside>
@@ -575,7 +592,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L502">fetchy.ts:502</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L525">fetchy.ts:525</a>
 									</li>
 								</ul>
 							</aside>
@@ -599,7 +616,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L465">fetchy.ts:465</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L488">fetchy.ts:488</a>
 									</li>
 								</ul>
 							</aside>
@@ -632,7 +649,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L428">fetchy.ts:428</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L451">fetchy.ts:451</a>
 									</li>
 								</ul>
 							</aside>
@@ -665,7 +682,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L185">fetchy.ts:185</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L208">fetchy.ts:208</a>
 									</li>
 								</ul>
 							</aside>
@@ -691,7 +708,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L549">fetchy.ts:549</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L572">fetchy.ts:572</a>
 									</li>
 								</ul>
 							</aside>
@@ -724,7 +741,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L704">fetchy.ts:704</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L727">fetchy.ts:727</a>
 									</li>
 								</ul>
 							</aside>
@@ -758,7 +775,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L389">fetchy.ts:389</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L412">fetchy.ts:412</a>
 									</li>
 								</ul>
 							</aside>
@@ -791,7 +808,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L278">fetchy.ts:278</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L301">fetchy.ts:301</a>
 									</li>
 								</ul>
 							</aside>
@@ -823,7 +840,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L634">fetchy.ts:634</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L657">fetchy.ts:657</a>
 									</li>
 								</ul>
 							</aside>
@@ -849,7 +866,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L355">fetchy.ts:355</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L378">fetchy.ts:378</a>
 									</li>
 								</ul>
 							</aside>
@@ -882,7 +899,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L447">fetchy.ts:447</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L470">fetchy.ts:470</a>
 									</li>
 								</ul>
 							</aside>
@@ -915,7 +932,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L565">fetchy.ts:565</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L588">fetchy.ts:588</a>
 									</li>
 								</ul>
 							</aside>
@@ -941,7 +958,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L668">fetchy.ts:668</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L691">fetchy.ts:691</a>
 									</li>
 								</ul>
 							</aside>
@@ -967,7 +984,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L336">fetchy.ts:336</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L359">fetchy.ts:359</a>
 									</li>
 								</ul>
 							</aside>
@@ -1000,7 +1017,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L484">fetchy.ts:484</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L507">fetchy.ts:507</a>
 									</li>
 								</ul>
 							</aside>
@@ -1033,7 +1050,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L515">fetchy.ts:515</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L538">fetchy.ts:538</a>
 									</li>
 								</ul>
 							</aside>
@@ -1069,7 +1086,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L576">fetchy.ts:576</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L599">fetchy.ts:599</a>
 									</li>
 								</ul>
 							</aside>
@@ -1095,7 +1112,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L308">fetchy.ts:308</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L331">fetchy.ts:331</a>
 									</li>
 								</ul>
 							</aside>
@@ -1119,7 +1136,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L584">fetchy.ts:584</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L607">fetchy.ts:607</a>
 									</li>
 								</ul>
 							</aside>
@@ -1145,7 +1162,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L409">fetchy.ts:409</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L432">fetchy.ts:432</a>
 									</li>
 								</ul>
 							</aside>
@@ -1184,7 +1201,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L660">fetchy.ts:660</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L683">fetchy.ts:683</a>
 									</li>
 								</ul>
 							</aside>
@@ -1210,7 +1227,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L619">fetchy.ts:619</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L642">fetchy.ts:642</a>
 									</li>
 								</ul>
 							</aside>
@@ -1242,7 +1259,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L680">fetchy.ts:680</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L703">fetchy.ts:703</a>
 									</li>
 								</ul>
 							</aside>
@@ -1276,7 +1293,7 @@ Authors
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L371">fetchy.ts:371</a>
+									<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L394">fetchy.ts:394</a>
 									</li>
 								</ul>
 							</aside>
@@ -1308,7 +1325,7 @@ Authors
 					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L99">fetchy.ts:99</a>
+							<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L132">fetchy.ts:132</a>
 							</li>
 						</ul>
 					</aside>
@@ -1330,7 +1347,7 @@ Authors
 						<div class="tsd-signature tsd-kind-icon">_cache<wbr>Queue<wbr>Retries<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;40</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L107">fetchy.ts:107</a>
+								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L140">fetchy.ts:140</a>
 								</li>
 							</ul>
 						</aside>
@@ -1341,7 +1358,7 @@ Authors
 						<div class="tsd-signature tsd-kind-icon">_cache<wbr>QueueUID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;_cacheResponseQueue&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L106">fetchy.ts:106</a>
+								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L139">fetchy.ts:139</a>
 								</li>
 							</ul>
 						</aside>
@@ -1352,7 +1369,7 @@ Authors
 						<div class="tsd-signature tsd-kind-icon">_cacheUID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;_cacheResponseData&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L105">fetchy.ts:105</a>
+								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L138">fetchy.ts:138</a>
 								</li>
 							</ul>
 						</aside>
@@ -1363,7 +1380,7 @@ Authors
 						<div class="tsd-signature tsd-kind-icon">format<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;json&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L103">fetchy.ts:103</a>
+								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L136">fetchy.ts:136</a>
 								</li>
 							</ul>
 						</aside>
@@ -1374,7 +1391,7 @@ Authors
 						<div class="tsd-signature tsd-kind-icon">method<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;GET&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L104">fetchy.ts:104</a>
+								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L137">fetchy.ts:137</a>
 								</li>
 							</ul>
 						</aside>
@@ -1385,7 +1402,7 @@ Authors
 						<div class="tsd-signature tsd-kind-icon">retry<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L102">fetchy.ts:102</a>
+								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L135">fetchy.ts:135</a>
 								</li>
 							</ul>
 						</aside>
@@ -1396,7 +1413,7 @@ Authors
 						<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;30000</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L101">fetchy.ts:101</a>
+								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L134">fetchy.ts:134</a>
 								</li>
 							</ul>
 						</aside>
@@ -1407,7 +1424,7 @@ Authors
 						<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/25d6b59/src/ts/fetchy.ts#L100">fetchy.ts:100</a>
+								<li><span>Defined in</span> <a href="https://github.com/Mango-Design/Fetchy/blob/08057e5/src/ts/fetchy.ts#L133">fetchy.ts:133</a>
 								</li>
 							</ul>
 						</aside>
