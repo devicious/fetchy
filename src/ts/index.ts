@@ -1,0 +1,1 @@
+module.exports = require("./fetchy").Fetchy;

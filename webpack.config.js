@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/ts/fetchy.ts',
+    entry: './src/ts/index.ts',
     mode: 'development',
     module: {
         rules: [
@@ -28,5 +28,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'fetchy.js',
+        libraryTarget: "var",
+        library: "Tata"
     },
 };

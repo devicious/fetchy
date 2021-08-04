@@ -134,7 +134,7 @@ interface FetchyConfig {
  * @param {string} url - This parameter is required
  * @returns a new instance of Fetchy class
  */
-class Fetchy {
+export class Fetchy {
 
     /**
      * This variable represents the internal state of a Fetchy instance. <br>
