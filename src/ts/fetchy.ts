@@ -41,10 +41,10 @@ interface FetchyConfig {
 class Fetchy {
 
     /**
-     * This variable represents the internal state of a Fetchy instance.
+     * This variable represents the internal state of a Fetchy instance. <br>
      * It mutates while you configure your instance, and it's inherited from its child.
      *
-     * @category Internal Configuration
+     * @internal
      */
     private config: FetchyConfig = {
         url: '',
@@ -72,6 +72,26 @@ class Fetchy {
      */
     private writable = true;
 
+    /**
+     * Fetchy instantiation and use example:
+     *
+     * ```
+     * const Authors = new Fetchy("/api/v1/authors")
+     *      .method('POST')
+     *      .cache(true)
+     *      .id('articles')
+     *      .expiry(1);
+     *
+     * Authors
+     *      .data({
+     *             parameter1: 'value1',
+     *             parameter2: 'value2'
+     *      })
+     *      .then((results) => {
+     *         console.log(results);
+     *      });
+     * ```
+     */
     constructor(url: string) {
 
         this.config = {
@@ -637,31 +657,3 @@ class Fetchy {
     }
 
 }
-
-const Authors = new Fetchy("https://6102cc7e79ed680017482315.mockapi.io/api/v1/users")
-    .method('POST')
-    .cache(true)
-    .id('articles')
-    .expiry(1)
-
-let result =
-    Authors
-        .data({
-            abc: '12312',
-            cdd: '123123'
-        })
-        .then((data) => {
-            console.log('1', data);
-        });
-
-
-let result2 =
-    Authors
-        .data({
-            abc: '12312',
-            cdd: '123123'
-        })
-        .then((data) => {
-            console.log('2', data);
-        });
-
