@@ -2,8 +2,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/ts/index.ts',
-    mode: 'development',
+    entry: {
+        Fetchy: './src/ts/index.ts'
+    },
+    mode: 'production',
     module: {
         rules: [
             {
@@ -13,7 +15,7 @@ module.exports = {
             },
         ],
     },
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     devServer: {
         contentBase: './dist',
     },
@@ -27,8 +29,6 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'fetchy.js',
-        libraryTarget: "var",
-        library: "Tata"
+        filename: 'fetchy.js'
     },
 };

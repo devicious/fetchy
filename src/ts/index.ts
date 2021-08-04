@@ -1,1 +1,2 @@
-module.exports = require("./fetchy").Fetchy;
+import {Fetchy} from "./fetchy";
+global.Fetchy = Fetchy;
