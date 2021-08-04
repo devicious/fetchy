@@ -257,6 +257,12 @@ class Fetchy {
         return this;
     }
 
+    /**
+     * Allows to set a method for the fetch call.
+     *
+     * @param {string} method - Allowed values: 'GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'
+     * @returns the Fetchy class instance
+     */
     method(method: string) {
         const allowed_methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'];
         if (method && allowed_methods.indexOf(method) >= 0) {
@@ -270,6 +276,12 @@ class Fetchy {
         return this;
     }
 
+    /**
+     * Allows to set headers for the fetch call.
+     *
+     * @param {any} headers - Allowed values Array, Object
+     * @returns the Fetchy class instance
+     */
     headers(headers: any) {
         if (headers) {
             this.override({
@@ -280,6 +292,12 @@ class Fetchy {
         return this;
     }
 
+    /**
+     * Allows to set fetch timeout in seconds.
+     *
+     * @param {number} seconds - Must be a value equal or greater than 1
+     * @returns the Fetchy class instance
+     */
     timeout(seconds: number) {
         if (seconds && seconds >= 1) {
             this.override({
@@ -292,6 +310,12 @@ class Fetchy {
         return this;
     }
 
+    /**
+     * Allows to set fetch expected response format
+     *
+     * @param {string} format - Allowed values: 'json', 'text', 'blob'
+     * @returns the Fetchy class instance
+     */
     format(format: string) {
         const allowed_formats = ['json', 'text', 'blob'];
         if (format && allowed_formats.indexOf(format) >= 0) {
@@ -305,6 +329,13 @@ class Fetchy {
         return this;
     }
 
+    /**
+     * Allows to set automatic retries in case of fetch failure.
+     *
+     * @param {number} times - Number of times to retry before considering failed the request
+     * @param {number} delayMs - Time to wait between each try, expressed in ms.
+     * @returns the Fetchy class instance
+     */
     retry(times: number, delayMs: number = 0) {
         if (times && times >= 0) {
             this.override({
@@ -318,7 +349,13 @@ class Fetchy {
         return this;
     }
 
-    data(data) {
+    /**
+     * Allows to set request payload.
+     *
+     * @param {any} data - Allowed formats: Object, Array, String.
+     * @returns *a new clone* of Fetchy class instance that inherits all previous configurations.
+     */
+    data(data: any) {
         const clone = this.clone();
         if (this.config.method !== 'GET') {
             clone.override({
@@ -331,7 +368,13 @@ class Fetchy {
         return clone;
     }
 
-    id(id) {
+    /**
+     * Sets a unique id for the current Fetch instance, allowing more clear and debug friendly caching
+     *
+     * @param {string} id - Allowed values: Any unique string
+     * @returns the Fetchy class instance
+     */
+    id(id: string) {
         if (id) {
             this.override({
                 id
@@ -343,6 +386,12 @@ class Fetchy {
         return this;
     }
 
+    /**
+     * Sets the credential mode for the current Fetch instance.
+     *
+     * @param {string} credentials - Allowed values: 'omit', 'same-origin', 'include'
+     * @returns the Fetchy class instance
+     */
     credentials(credentials: string) {
         const allowed_credentials = ['omit', 'same-origin', 'include'];
         if (credentials && allowed_credentials.indexOf(credentials) >= 0) {
@@ -356,6 +405,12 @@ class Fetchy {
         return this;
     }
 
+    /**
+     * Sets a mode for the current Fetch instance to handle CORS issues
+     *
+     * @param {string} mode - 'cors', 'same-origin', 'no-cors'
+     * @returns the Fetchy class instance
+     */
     mode(mode: string) {
         const allowed_modes = ['cors', 'same-origin', 'no-cors'];
         if (mode && allowed_modes.indexOf(mode) >= 0) {
@@ -369,6 +424,11 @@ class Fetchy {
         return this;
     }
 
+    /**
+     * Clones the current instance into a new one, allowing for configuration changes without affecting the original instance.
+     *
+     * @returns *a new clone* of Fetchy class instance that inherits all previous configurations.
+     */
     clone() {
         const url = this.config.url;
         const instance = new Fetchy(url);
@@ -377,6 +437,11 @@ class Fetchy {
         return instance;
     }
 
+    /**
+     * Override the current configuration of the Fetchy instance without format restrictions, should not be used.
+     * @internal
+     * @returns *a new clone* of Fetchy class instance that inherits all previous configurations.
+     */
     override(config) {
         if (this.writable) {
             this.config = {
@@ -389,6 +454,14 @@ class Fetchy {
         return this;
     }
 
+    /**
+     * Enable or disable automatic caching for the current Fetchy instance. <br>
+     * Caching is performed automatically when enabled based on the current set of parameters, and automatically handling configuration changes. <br>
+     * Any change in the configuration or data payload will generate new calls instead of fetching from the cache.
+     *
+     * @param {boolean} enable - true | false
+     * @returns the Fetchy class instance
+     */
     cache(enable: boolean) {
         this.override({
             cache: !!enable
@@ -397,7 +470,13 @@ class Fetchy {
         return this;
     }
 
-    expiry(minutes) {
+    /**
+     * Sets a time in minutes after which any cached request will be discarded and substituted with a fresh data fetch.
+     *
+     * @param {number} minutes - Timing expressed in minutes
+     * @returns the Fetchy class instance
+     */
+    expiry(minutes: number) {
         if (minutes && minutes >= 1) {
             const now = new Date().getTime();
             this.override({
@@ -410,6 +489,9 @@ class Fetchy {
         return this;
     }
 
+    /**
+     * @internal
+     */
     private isCached() {
         this.refreshCacheStorage();
         const hash = this.getCacheHash();
@@ -418,11 +500,17 @@ class Fetchy {
         return !!item && (!item.expiry || item.expiry > now);
     }
 
+    /**
+     * @internal
+     */
     private refreshCacheStorage() {
         this.cacheStorage = JSON.parse(sessionStorage.getItem(this.config._cacheUID) || "{}");
         window[this.config._cacheQueueUID] = window[this.config._cacheQueueUID] || {};
     }
 
+    /**
+     * @internal
+     */
     private retrieveCached() {
         return new Promise((resolve, reject) => {
             this.refreshCacheStorage();
@@ -455,6 +543,9 @@ class Fetchy {
         });
     }
 
+    /**
+     * @internal
+     */
     private storeCached(response) {
         this.refreshCacheStorage();
         const hash = this.getCacheHash();
@@ -467,6 +558,9 @@ class Fetchy {
 
     }
 
+    /**
+     * @internal
+     */
     private getCacheHash() {
         const {
             url,
@@ -490,34 +584,56 @@ class Fetchy {
         return `${id}-${MD5(preHash.replace(/[^\w]/gi, '')).toString()}`;
     }
 
+    /**
+     * @internal
+     */
     private setQueue() {
         const hash = this.getCacheHash();
         window[this.config._cacheQueueUID][hash] = true;
     }
 
+    /**
+     * @internal
+     */
     private isInQueue() {
         const hash = this.getCacheHash();
         return !!window[this.config._cacheQueueUID][hash];
     }
 
-    then(fn) {
+    /**
+     * Triggers the data fetch and returns the final payload. <br>
+     * After this method is invoked is no longer possible to change this instance configuration without cloning it.
+     *
+     * @param {Function} fn - A callback function that is invoked with the result of the fetch in case of success
+     * @returns *a mutated version* of Fetchy class instance that inherits all the properties of a *Promise*.
+     */
+    then(fn: Function) {
         return this.do()
             .then(fn)
     }
 
-    catch(fn) {
+    /**
+     * Triggers the data fetch and returns the final payload. <br>
+     * After this method is invoked is no longer possible to change this instance configuration without cloning it.
+     *
+     * @param {Function} fn - A callback function that is invoked with the result of the fetch in case of error
+     * @returns *a mutated version* of Fetchy class instance that inherits all the properties of a *Promise*.
+     */
+    catch(fn: Function) {
         return this.do()
             .catch(fn)
     }
 
-    finally(fn) {
+    /**
+     * Triggers the data fetch and returns the final payload. <br>
+     * After this method is invoked is no longer possible to change this instance configuration without cloning it.
+     *
+     * @param {Function} fn - A callback function that is invoked with the result of the fetch in either case
+     * @returns *a mutated version* of Fetchy class instance that inherits all the properties of a *Promise*.
+     */
+    finally(fn: Function) {
         return this.do()
             .finally(fn)
-    }
-
-    debug() {
-        console.log(this.config);
-        return this;
     }
 
 }

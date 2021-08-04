@@ -940,9 +940,6 @@ img { max-width: 100%; }
 				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 					<a href="_fetchy_.fetchy.html#data" class="tsd-kind-icon">data</a>
 				</li>
-				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-					<a href="_fetchy_.fetchy.html#debug" class="tsd-kind-icon">debug</a>
-				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 					<a href="_fetchy_.fetchy.html#do" class="tsd-kind-icon">do</a>
 				</li>
@@ -1082,7 +1079,6 @@ img { max-width: 100%; }
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_fetchy_.fetchy.html#clone" class="tsd-kind-icon">clone</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_fetchy_.fetchy.html#credentials" class="tsd-kind-icon">credentials</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_fetchy_.fetchy.html#data" class="tsd-kind-icon">data</a></li>
-							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_fetchy_.fetchy.html#debug" class="tsd-kind-icon">debug</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_fetchy_.fetchy.html#do" class="tsd-kind-icon">do</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_fetchy_.fetchy.html#expiry" class="tsd-kind-icon">expiry</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_fetchy_.fetchy.html#finally" class="tsd-kind-icon">finally</a></li>
@@ -1127,7 +1123,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L73">fetchy.ts:73</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L73">fetchy.ts:73</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1149,7 +1145,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">cache<wbr>Storage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L65">fetchy.ts:65</a></li>
+						<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L65">fetchy.ts:65</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1174,7 +1170,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">writable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L73">fetchy.ts:73</a></li>
+						<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L73">fetchy.ts:73</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1202,7 +1198,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L106">fetchy.ts:106</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L106">fetchy.ts:106</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1231,16 +1227,27 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L392">fetchy.ts:392</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L465">fetchy.ts:465</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Enable or disable automatic caching for the current Fetchy instance. <br>
+									Caching is performed automatically when enabled based on the current set of parameters, and automatically handling configuration changes. <br>
+								Any change in the configuration or data payload will generate new calls instead of fetching from the cache.</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>enable: <span class="tsd-signature-type">boolean</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>true | false</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						<p>the Fetchy class instance</p>
 					</li>
 				</ul>
 			</section>
@@ -1254,7 +1261,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L191">fetchy.ts:191</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L191">fetchy.ts:191</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1271,22 +1278,32 @@ img { max-width: 100%; }
 				<a name="catch" class="tsd-anchor"></a>
 				<h3>catch</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">catch<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					<li class="tsd-signature tsd-kind-icon">catch<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L508">fetchy.ts:508</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L622">fetchy.ts:622</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Triggers the data fetch and returns the final payload. <br>
+								After this method is invoked is no longer possible to change this instance configuration without cloning it.</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>fn: <span class="tsd-signature-type">any</span></h5>
+								<h5>fn: <span class="tsd-signature-type">Function</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>A callback function that is invoked with the result of the fetch in case of error</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						<p><em>a mutated version</em> of Fetchy class instance that inherits all the properties of a <em>Promise</em>.</p>
 					</li>
 				</ul>
 			</section>
@@ -1300,10 +1317,16 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L372">fetchy.ts:372</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L432">fetchy.ts:432</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Clones the current instance into a new one, allowing for configuration changes without affecting the original instance.</p>
+							</div>
+						</div>
 						<h4 class="tsd-returns-title">Returns <a href="_fetchy_.fetchy.html" class="tsd-signature-type">Fetchy</a></h4>
+						<p><em>a new clone</em> of Fetchy class instance that inherits all previous configurations.</p>
 					</li>
 				</ul>
 			</section>
@@ -1317,16 +1340,25 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L346">fetchy.ts:346</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L395">fetchy.ts:395</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Sets the credential mode for the current Fetch instance.</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>credentials: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Allowed values: &#39;omit&#39;, &#39;same-origin&#39;, &#39;include&#39;</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						<p>the Fetchy class instance</p>
 					</li>
 				</ul>
 			</section>
@@ -1340,33 +1372,25 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L321">fetchy.ts:321</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L358">fetchy.ts:358</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Allows to set request payload.</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>data: <span class="tsd-signature-type">any</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Allowed formats: Object, Array, String.</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="_fetchy_.fetchy.html" class="tsd-signature-type">Fetchy</a></h4>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-				<a name="debug" class="tsd-anchor"></a>
-				<h3>debug</h3>
-				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L518">fetchy.ts:518</a></li>
-							</ul>
-						</aside>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						<p><em>a new clone</em> of Fetchy class instance that inherits all previous configurations.</p>
 					</li>
 				</ul>
 			</section>
@@ -1380,7 +1404,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L115">fetchy.ts:115</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L115">fetchy.ts:115</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1397,22 +1421,31 @@ img { max-width: 100%; }
 				<a name="expiry" class="tsd-anchor"></a>
 				<h3>expiry</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">expiry<span class="tsd-signature-symbol">(</span>minutes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					<li class="tsd-signature tsd-kind-icon">expiry<span class="tsd-signature-symbol">(</span>minutes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L400">fetchy.ts:400</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L479">fetchy.ts:479</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Sets a time in minutes after which any cached request will be discarded and substituted with a fresh data fetch.</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>minutes: <span class="tsd-signature-type">any</span></h5>
+								<h5>minutes: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Timing expressed in minutes</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						<p>the Fetchy class instance</p>
 					</li>
 				</ul>
 			</section>
@@ -1420,22 +1453,32 @@ img { max-width: 100%; }
 				<a name="finally" class="tsd-anchor"></a>
 				<h3>finally</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">finally<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					<li class="tsd-signature tsd-kind-icon">finally<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L513">fetchy.ts:513</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L634">fetchy.ts:634</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Triggers the data fetch and returns the final payload. <br>
+								After this method is invoked is no longer possible to change this instance configuration without cloning it.</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>fn: <span class="tsd-signature-type">any</span></h5>
+								<h5>fn: <span class="tsd-signature-type">Function</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>A callback function that is invoked with the result of the fetch in either case</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						<p><em>a mutated version</em> of Fetchy class instance that inherits all the properties of a <em>Promise</em>.</p>
 					</li>
 				</ul>
 			</section>
@@ -1449,16 +1492,25 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L295">fetchy.ts:295</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L319">fetchy.ts:319</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Allows to set fetch expected response format</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>format: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Allowed values: &#39;json&#39;, &#39;text&#39;, &#39;blob&#39;</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						<p>the Fetchy class instance</p>
 					</li>
 				</ul>
 			</section>
@@ -1472,7 +1524,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L208">fetchy.ts:208</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L208">fetchy.ts:208</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1501,9 +1553,15 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L470">fetchy.ts:470</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L564">fetchy.ts:564</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<dl class="tsd-comment-tags">
+								<dt>internal</dt>
+								<dd></dd>
+							</dl>
+						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 					</li>
 				</ul>
@@ -1518,16 +1576,25 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L273">fetchy.ts:273</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L285">fetchy.ts:285</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Allows to set headers for the fetch call.</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>headers: <span class="tsd-signature-type">any</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Allowed values Array, Object</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						<p>the Fetchy class instance</p>
 					</li>
 				</ul>
 			</section>
@@ -1535,22 +1602,31 @@ img { max-width: 100%; }
 				<a name="id" class="tsd-anchor"></a>
 				<h3>id</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					<li class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L334">fetchy.ts:334</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L377">fetchy.ts:377</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Sets a unique id for the current Fetch instance, allowing more clear and debug friendly caching</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>id: <span class="tsd-signature-type">any</span></h5>
+								<h5>id: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Allowed values: Any unique string</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						<p>the Fetchy class instance</p>
 					</li>
 				</ul>
 			</section>
@@ -1564,9 +1640,15 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L413">fetchy.ts:413</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L495">fetchy.ts:495</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<dl class="tsd-comment-tags">
+								<dt>internal</dt>
+								<dd></dd>
+							</dl>
+						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 					</li>
 				</ul>
@@ -1581,9 +1663,15 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L498">fetchy.ts:498</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L598">fetchy.ts:598</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<dl class="tsd-comment-tags">
+								<dt>internal</dt>
+								<dd></dd>
+							</dl>
+						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 					</li>
 				</ul>
@@ -1598,16 +1686,25 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L260">fetchy.ts:260</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L266">fetchy.ts:266</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Allows to set a method for the fetch call.</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>method: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Allowed values: &#39;GET&#39;, &#39;POST&#39;, &#39;PATCH&#39;, &#39;PUT&#39;, &#39;DELETE&#39;, &#39;OPTIONS&#39;</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						<p>the Fetchy class instance</p>
 					</li>
 				</ul>
 			</section>
@@ -1621,16 +1718,25 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L359">fetchy.ts:359</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L414">fetchy.ts:414</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Sets a mode for the current Fetch instance to handle CORS issues</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>mode: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>&#39;cors&#39;, &#39;same-origin&#39;, &#39;no-cors&#39;</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						<p>the Fetchy class instance</p>
 					</li>
 				</ul>
 			</section>
@@ -1644,9 +1750,18 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L380">fetchy.ts:380</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L445">fetchy.ts:445</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Override the current configuration of the Fetchy instance without format restrictions, should not be used.</p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>internal</dt>
+								<dd></dd>
+							</dl>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
@@ -1654,6 +1769,7 @@ img { max-width: 100%; }
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						<p><em>a new clone</em> of Fetchy class instance that inherits all previous configurations.</p>
 					</li>
 				</ul>
 			</section>
@@ -1667,9 +1783,15 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L421">fetchy.ts:421</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L506">fetchy.ts:506</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<dl class="tsd-comment-tags">
+								<dt>internal</dt>
+								<dd></dd>
+							</dl>
+						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 					</li>
 				</ul>
@@ -1684,7 +1806,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L238">fetchy.ts:238</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L238">fetchy.ts:238</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1707,9 +1829,15 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L426">fetchy.ts:426</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L514">fetchy.ts:514</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<dl class="tsd-comment-tags">
+								<dt>internal</dt>
+								<dd></dd>
+							</dl>
+						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
@@ -1724,19 +1852,31 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L308">fetchy.ts:308</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L339">fetchy.ts:339</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Allows to set automatic retries in case of fetch failure.</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>times: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Number of times to retry before considering failed the request</p>
+								</div>
 							</li>
 							<li>
 								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> delayMs: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Time to wait between each try, expressed in ms.</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						<p>the Fetchy class instance</p>
 					</li>
 				</ul>
 			</section>
@@ -1750,9 +1890,15 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L493">fetchy.ts:493</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L590">fetchy.ts:590</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<dl class="tsd-comment-tags">
+								<dt>internal</dt>
+								<dd></dd>
+							</dl>
+						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 					</li>
 				</ul>
@@ -1767,9 +1913,15 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L458">fetchy.ts:458</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L549">fetchy.ts:549</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<dl class="tsd-comment-tags">
+								<dt>internal</dt>
+								<dd></dd>
+							</dl>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
@@ -1784,22 +1936,32 @@ img { max-width: 100%; }
 				<a name="then" class="tsd-anchor"></a>
 				<h3>then</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">then<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					<li class="tsd-signature tsd-kind-icon">then<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L503">fetchy.ts:503</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L610">fetchy.ts:610</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Triggers the data fetch and returns the final payload. <br>
+								After this method is invoked is no longer possible to change this instance configuration without cloning it.</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>fn: <span class="tsd-signature-type">any</span></h5>
+								<h5>fn: <span class="tsd-signature-type">Function</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>A callback function that is invoked with the result of the fetch in case of success</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						<p><em>a mutated version</em> of Fetchy class instance that inherits all the properties of a <em>Promise</em>.</p>
 					</li>
 				</ul>
 			</section>
@@ -1813,16 +1975,25 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L283">fetchy.ts:283</a></li>
+								<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L301">fetchy.ts:301</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Allows to set fetch timeout in seconds.</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>seconds: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Must be a value equal or greater than 1</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						<p>the Fetchy class instance</p>
 					</li>
 				</ul>
 			</section>
@@ -1835,7 +2006,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L49">fetchy.ts:49</a></li>
+						<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L49">fetchy.ts:49</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1855,7 +2026,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">_cache<wbr>Queue<wbr>Retries<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;40</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L57">fetchy.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L57">fetchy.ts:57</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -1865,7 +2036,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">_cache<wbr>QueueUID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;_cacheResponseQueue&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L56">fetchy.ts:56</a></li>
+							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L56">fetchy.ts:56</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -1875,7 +2046,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">_cacheUID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;_cacheResponseData&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L55">fetchy.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L55">fetchy.ts:55</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -1885,7 +2056,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">format<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;json&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L53">fetchy.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L53">fetchy.ts:53</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -1895,7 +2066,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">method<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;GET&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L54">fetchy.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L54">fetchy.ts:54</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -1905,7 +2076,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">retry<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L52">fetchy.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L52">fetchy.ts:52</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -1915,7 +2086,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;10000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L51">fetchy.ts:51</a></li>
+							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L51">fetchy.ts:51</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -1925,7 +2096,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/bb0aa8b/src/ts/fetchy.ts#L50">fetchy.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/Mango-Design/Fetchy/blob/c4da8ce/src/ts/fetchy.ts#L50">fetchy.ts:50</a></li>
 						</ul>
 					</aside>
 				</section>

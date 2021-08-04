@@ -18,6 +18,6 @@
     "build": "webpack",
     "start": "webpack serve --open",
     "watch": "webpack --watch",
-    "docs": "typedoc --out docs ./src/ts/fetch.ts --excludeExternals --excludeInternal --name Fetchy --ignoreCompilerErrors --theme minimal"
+    "docs": "typedoc --out docs ./src/ts/fetch.ts --excludeExternals --name Fetchy --ignoreCompilerErrors --theme minimal"
   }
 }
