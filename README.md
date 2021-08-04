@@ -1,4 +1,1 @@
-#Fetchy
-____________
-###Documentation available [here](./docs/index.html)
-> ./docs/index.html
+All the documentation is available by browsing the module Fetchy.

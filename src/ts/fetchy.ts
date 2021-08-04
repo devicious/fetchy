@@ -75,6 +75,11 @@ interface FetchyConfig {
      */
     expiry?: number,
     /**
+     * Contains a custom  function that enables the caching of the results. The function should return true/false depending on the validity of the response. <br> Defaults to <b>Ensure that the response is not empty and with status code 200</b>.
+     * @cache
+     */
+    validator?: Function,
+    /**
      * Internal use only.
      * @internal
      */
@@ -196,6 +201,9 @@ export class Fetchy {
             cache: false,
             id: '',
             expiry: 0,
+            validator: (res) => {
+                return res && res.meta.ok;
+            },
             _cacheUID: "_cacheResponseData",
             _cacheQueueUID: "_cacheResponseQueue",
             _cacheQueueRetries: 40
@@ -284,7 +292,7 @@ export class Fetchy {
             }
 
         }).then((response) => {
-            if (cacheEnabled && !this.isCached()) {
+            if (cacheEnabled && !this.isCached() && this.config.validator(response)) {
                 this.storeCached(response);
             }
             return response;
@@ -335,34 +343,6 @@ export class Fetchy {
         }
     }
 
-
-    /**
-     * Resets the internal state to the default values.
-     *
-     * @utility
-     * @returns the current *Fetchy* instance
-     */
-    reset() {
-
-        this.override({
-            method: 'GET',
-            data: undefined,
-            headers: new Headers({
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            }),
-            timeout: 30000,
-            retry: 0,
-            delay: 0,
-            format: "json",
-            credentials: "same-origin",
-            mode: 'cors',
-            token: false,
-            cache: false
-        })
-
-        return this;
-    }
 
     /**
      * Allows to set a method for the fetch call.
@@ -527,6 +507,34 @@ export class Fetchy {
             })
         } else {
             throw `The mode you specified ${mode} is not valid.`;
+        }
+
+        return this;
+    }
+
+    /**
+     *
+     * Sets a validator function to allow or forbid caching of any request coming from this instance. The cache is common among all Fetchy instances <br> Defaults to <b>Ensure that the response is not empty and with status code 200</b>.
+     * @cache
+     * @param {Function} fn - Allowed values: 'cors', 'same-origin', 'no-cors'
+     * @returns the Fetchy class instance
+     * <br>
+     * Example validator function:
+     * ```
+     *    const Helper = new Fetchy("/api/v1/:endpoint")
+     *      .cache(true) //Caching must be enabled for validator function to take any effect.
+     *      .validator((response) => {
+     *          return response && response.header.status === "OK";
+     *      });
+     * ```
+     */
+    validator(fn) {
+        if (fn && typeof fn === "function") {
+            this.override({
+                validator: fn,
+            })
+        } else {
+            throw `You must specify a valid function as a validator`
         }
 
         return this;
