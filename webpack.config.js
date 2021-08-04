@@ -1,11 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+module.exports = env => ({
     entry: {
         Fetchy: './src/ts/index.ts'
     },
-    mode: 'production',
+    mode: env.production ? "production" : "development",
     module: {
         rules: [
             {
@@ -15,7 +15,7 @@ module.exports = {
             },
         ],
     },
-    devtool: 'source-map',
+    devtool: env.production ? 'source-map' : 'inline-source-map',
     devServer: {
         contentBase: './dist',
     },
@@ -31,4 +31,4 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'fetchy.js'
     },
-};
+});

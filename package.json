@@ -14,7 +14,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --env production",
     "start": "webpack serve --open",
     "watch": "webpack --watch",
     "docs": "typedoc --out docs ./src/ts/fetch.ts --excludeExternals --name Fetchy --ignoreCompilerErrors --theme assets/ignite_theme"
