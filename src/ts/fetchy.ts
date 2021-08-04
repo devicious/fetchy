@@ -78,22 +78,7 @@ interface FetchyConfig {
      * Contains a custom  function that enables the caching of the results. The function should return true/false depending on the validity of the response. <br> Defaults to <b>Ensure that the response is not empty and with status code 200</b>.
      * @cache
      */
-    validator?: Function,
-    /**
-     * Internal use only.
-     * @internal
-     */
-    _cacheUID: string,
-    /**
-     * Internal use only.
-     * @internal
-     */
-    _cacheQueueUID: string
-    /**
-     * Internal use only.
-     * @internal
-     */
-    _cacheQueueRetries: number
+    validator?: Function
 }
 
 /**
@@ -152,11 +137,24 @@ export class Fetchy {
         timeout: 30000,
         retry: 0,
         format: "json",
-        method: 'GET',
-        _cacheUID: "_cacheResponseData",
-        _cacheQueueUID: "_cacheResponseQueue",
-        _cacheQueueRetries: 40
+        method: 'GET'
     };
+
+    /**
+     * Internal use only.
+     * @internal
+     */
+    private readonly cacheUID = "_cacheResponseData";
+    /**
+     * Internal use only.
+     * @internal
+     */
+    private readonly cacheQueueUID = "_cacheResponseQueue";
+    /**
+     * Internal use only.
+     * @internal
+     */
+    private readonly cacheQueueRetries = 40;
 
     /**
      * This variable handles the internal caching storage.
@@ -204,12 +202,13 @@ export class Fetchy {
             validator: (res) => {
                 return res && res.meta.ok;
             },
-            _cacheUID: "_cacheResponseData",
-            _cacheQueueUID: "_cacheResponseQueue",
-            _cacheQueueRetries: 40
         }
 
         this.refreshCacheStorage();
+
+        this.cacheUID = "_cacheResponseData";
+        this.cacheQueueUID = "_cacheResponseQueue";
+        this.cacheQueueRetries = 40;
 
     }
 
@@ -606,6 +605,32 @@ export class Fetchy {
     }
 
     /**
+     * Allows to clear the cached entries of a specific id or in general.
+     * @cache
+     * @param {string} id - The id of the cached entity. *optional
+     */
+    clearCache(id?: string) {
+        if (id) {
+            const storage = JSON.parse(sessionStorage.getItem(this.cacheUID) || "{}");
+            for (let key in storage) {
+                if (storage.hasOwnProperty(key)) {
+                    if (storage[key].id === id) {
+                        delete storage[key];
+                    }
+                }
+            }
+            delete window[this.cacheQueueUID][id];
+            sessionStorage.setItem(this.cacheUID, JSON.stringify(storage));
+            this.cacheStorage = storage;
+        } else {
+            sessionStorage.removeItem(this.cacheUID);
+            this.cacheStorage = {};
+            //@ts-ignore
+            window[this.cacheQueueUID] = {};
+        }
+    }
+
+    /**
      * @internal
      */
     private isCached() {
@@ -620,8 +645,9 @@ export class Fetchy {
      * @internal
      */
     private refreshCacheStorage() {
-        this.cacheStorage = JSON.parse(sessionStorage.getItem(this.config._cacheUID) || "{}");
-        window[this.config._cacheQueueUID] = window[this.config._cacheQueueUID] || {};
+        this.cacheStorage = JSON.parse(sessionStorage.getItem(this.cacheUID) || "{}");
+        //@ts-ignore;
+        window[this.cacheQueueUID] = window[this.cacheQueueUID] || {};
     }
 
     /**
@@ -637,7 +663,7 @@ export class Fetchy {
                     resolve(item.data);
                 } else {
                     let tries = 0;
-                    const maxTries = this.config._cacheQueueRetries;
+                    const maxTries = this.cacheQueueRetries;
                     const handler = this;
                     const interval = setInterval(() => {
                         handler.refreshCacheStorage();
@@ -667,10 +693,11 @@ export class Fetchy {
         const hash = this.getCacheHash();
         this.cacheStorage[hash] = {
             expiry: this.config.expiry,
+            id: this.config.id || hash,
             data: response,
         };
-        sessionStorage.setItem(this.config._cacheUID, JSON.stringify(this.cacheStorage));
-        delete window[this.config._cacheQueueUID][hash];
+        sessionStorage.setItem(this.cacheUID, JSON.stringify(this.cacheStorage));
+        delete window[this.cacheQueueUID][hash];
 
     }
 
@@ -705,7 +732,7 @@ export class Fetchy {
      */
     private setQueue() {
         const hash = this.getCacheHash();
-        window[this.config._cacheQueueUID][hash] = true;
+        window[this.cacheQueueUID][hash] = true;
     }
 
     /**
@@ -713,7 +740,7 @@ export class Fetchy {
      */
     private isInQueue() {
         const hash = this.getCacheHash();
-        return !!window[this.config._cacheQueueUID][hash];
+        return !!window[this.cacheQueueUID][hash];
     }
 
     /**
