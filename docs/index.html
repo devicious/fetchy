@@ -88,19 +88,16 @@
 			</div>
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><span>Globals</span></a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_fetchy_.html">"fetchy"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_index_.html">"index"</a>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/Fetchy.html" class="tsd-kind-icon">Fetchy</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -109,14 +106,1017 @@
 				<div class="container">
 					<ul class="tsd-breadcrumb">
 						<li>
-							<a href="globals.html">Globals</a>
+							<a href="modules.html">Globals</a>
 						</li>
 					</ul>
-					<h1> Fetchy</h1>
+					<h1>Project Fetchy</h1>
 				</div>
 			</div>
 			<div class="tsd-panel tsd-typography">
-				<p>All the documentation is available by browsing the module Fetchy.</p>
+				<a href="#class-fetchy" id="class-fetchy" style="color: inherit; text-decoration: none;">
+					<h1>Class: Fetchy</h1>
+				</a>
+				<a href="#the-fetchy-class-represent-an-handy-and-configurable-helper-that-allows-to-easily-interact-with-remote-resources" id="the-fetchy-class-represent-an-handy-and-configurable-helper-that-allows-to-easily-interact-with-remote-resources" style="color: inherit; text-decoration: none;">
+					<h3>The <em>Fetchy</em> class represent an handy and configurable helper that allows to easily interact with remote resources.</h3>
+				</a>
+				<p>Any instance can be configured in many different aspects while enforcing use of correct configuration. <br>
+				Leveraging its functionalities it&#39;s easy to generate pre-configured instances of any given remote resource, and easily query them with cool features like: automatic error handling, caching, timeouts, etc.</p>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h3>Example:</h3>
+				</a>
+				<pre><code><span style="color: #008000">//Define and configure a new instance of a Fetchy Class</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">Authors</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Fetchy</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;/api/v1/authors&quot;</span><span style="color: #000000">)</span>
+<span style="color: #000000">     .</span><span style="color: #795E26">method</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;POST&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">     .</span><span style="color: #795E26">cache</span><span style="color: #000000">(</span><span style="color: #0000FF">true</span><span style="color: #000000">)</span>
+<span style="color: #000000">     .</span><span style="color: #795E26">id</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;articles&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">     .</span><span style="color: #795E26">expiry</span><span style="color: #000000">(</span><span style="color: #098658">1</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">//Further edit the configuration and fire the request.</span>
+<span style="color: #001080">Authors</span>
+<span style="color: #000000">     .</span><span style="color: #795E26">data</span><span style="color: #000000">({</span>
+<span style="color: #000000">            </span><span style="color: #001080">parameter1:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;value1&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">            </span><span style="color: #001080">parameter2:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;value2&#039;</span>
+<span style="color: #000000">     })</span>
+<span style="color: #000000">     .</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">results</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">results</span><span style="color: #000000">);</span>
+<span style="color: #000000">     });</span>
+
+<span style="color: #008000">//Execute another call with different parameters (caching won&#039;t affect the results since the payload has changed)</span>
+<span style="color: #001080">Authors</span>
+<span style="color: #000000">     .</span><span style="color: #795E26">data</span><span style="color: #000000">({</span>
+<span style="color: #000000">            </span><span style="color: #001080">parameter4:</span><span style="color: #000000"> </span><span style="color: #098658">123</span><span style="color: #000000">,</span>
+<span style="color: #000000">            </span><span style="color: #001080">parameter6:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span>
+<span style="color: #000000">     })</span>
+<span style="color: #000000">     .</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">results</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">results</span><span style="color: #000000">);</span>
+<span style="color: #000000">     })</span>
+<span style="color: #000000">     .</span><span style="color: #795E26">catch</span><span style="color: #000000">((</span><span style="color: #001080">error</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">error</span><span style="color: #000000">);</span>
+<span style="color: #000000">     });</span>
+</code></pre>
+				<p><strong><code>param</code></strong> This parameter is required</p>
+				<p><strong><code>returns</code></strong> a new instance of Fetchy class</p>
+				<a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
+					<h2>Table of contents</h2>
+				</a>
+				<a href="#constructors" id="constructors" style="color: inherit; text-decoration: none;">
+					<h3>Constructors</h3>
+				</a>
+				<ul>
+					<li><a href="Fetchy.md#constructor">constructor</a></li>
+				</ul>
+				<a href="#internal-properties" id="internal-properties" style="color: inherit; text-decoration: none;">
+					<h3>Internal Properties</h3>
+				</a>
+				<ul>
+					<li><a href="Fetchy.md#writable">writable</a></li>
+				</ul>
+				<a href="#other-properties" id="other-properties" style="color: inherit; text-decoration: none;">
+					<h3>Other Properties</h3>
+				</a>
+				<ul>
+					<li><a href="Fetchy.md#cachequeueretries">cacheQueueRetries</a></li>
+					<li><a href="Fetchy.md#cachequeueuid">cacheQueueUID</a></li>
+					<li><a href="Fetchy.md#cachestorage">cacheStorage</a></li>
+					<li><a href="Fetchy.md#cacheuid">cacheUID</a></li>
+					<li><a href="Fetchy.md#config">config</a></li>
+				</ul>
+				<a href="#methods" id="methods" style="color: inherit; text-decoration: none;">
+					<h3>Methods</h3>
+				</a>
+				<ul>
+					<li><a href="Fetchy.md#attachself">attachSelf</a></li>
+					<li><a href="Fetchy.md#cache">cache</a></li>
+					<li><a href="Fetchy.md#call">call</a></li>
+					<li><a href="Fetchy.md#catch">catch</a></li>
+					<li><a href="Fetchy.md#clearcache">clearCache</a></li>
+					<li><a href="Fetchy.md#clone">clone</a></li>
+					<li><a href="Fetchy.md#credentials">credentials</a></li>
+					<li><a href="Fetchy.md#data">data</a></li>
+					<li><a href="Fetchy.md#do">do</a></li>
+					<li><a href="Fetchy.md#expiry">expiry</a></li>
+					<li><a href="Fetchy.md#finally">finally</a></li>
+					<li><a href="Fetchy.md#format">format</a></li>
+					<li><a href="Fetchy.md#formatresponse">formatResponse</a></li>
+					<li><a href="Fetchy.md#getcachehash">getCacheHash</a></li>
+					<li><a href="Fetchy.md#headers">headers</a></li>
+					<li><a href="Fetchy.md#id">id</a></li>
+					<li><a href="Fetchy.md#iscached">isCached</a></li>
+					<li><a href="Fetchy.md#isinqueue">isInQueue</a></li>
+					<li><a href="Fetchy.md#method">method</a></li>
+					<li><a href="Fetchy.md#mode">mode</a></li>
+					<li><a href="Fetchy.md#override">override</a></li>
+					<li><a href="Fetchy.md#refreshcachestorage">refreshCacheStorage</a></li>
+					<li><a href="Fetchy.md#retrievecached">retrieveCached</a></li>
+					<li><a href="Fetchy.md#retry">retry</a></li>
+					<li><a href="Fetchy.md#setqueue">setQueue</a></li>
+					<li><a href="Fetchy.md#storecached">storeCached</a></li>
+					<li><a href="Fetchy.md#then">then</a></li>
+					<li><a href="Fetchy.md#timeout">timeout</a></li>
+					<li><a href="Fetchy.md#validator">validator</a></li>
+				</ul>
+				<a href="#constructors-1" id="constructors-1" style="color: inherit; text-decoration: none;">
+					<h2>Constructors</h2>
+				</a>
+				<a href="#constructor" id="constructor" style="color: inherit; text-decoration: none;">
+					<h3>constructor</h3>
+				</a>
+				<p>• <strong>new Fetchy</strong>(<code>url</code>)</p>
+				<a href="#basic-usage-get" id="basic-usage-get" style="color: inherit; text-decoration: none;">
+					<h3>Basic usage (GET):</h3>
+				</a>
+				<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">Resource</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Fetchy</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;/api/v1/:endpoint&quot;</span><span style="color: #000000">);</span>
+<span style="color: #001080">Resource</span><span style="color: #000000">.</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">data</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #008000">//...</span>
+<span style="color: #000000">});</span>
+</code></pre>
+				<a href="#parameters" id="parameters" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>url</code></td>
+							<td align="left"><code>string</code></td>
+						</tr>
+				</tbody></table>
+				<a href="#defined-in" id="defined-in" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L184">fetchy.ts:184</a></p>
+				<a href="#internal-properties-1" id="internal-properties-1" style="color: inherit; text-decoration: none;">
+					<h2>Internal Properties</h2>
+				</a>
+				<a href="#writable" id="writable" style="color: inherit; text-decoration: none;">
+					<h3>writable</h3>
+				</a>
+				<p>• <code>Private</code> <strong>writable</strong>: <code>boolean</code> = <code>true</code></p>
+				<p>The properties of a Fetchy instance are mutable up until the first fetch. <br>
+				From that moment only the payload data can be mutated, in order to prevent consistency issues.</p>
+				<a href="#defined-in-1" id="defined-in-1" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L172">fetchy.ts:172</a></p>
+				<hr>
+				<a href="#other-properties-1" id="other-properties-1" style="color: inherit; text-decoration: none;">
+					<h2>Other Properties</h2>
+				</a>
+				<a href="#cachequeueretries" id="cachequeueretries" style="color: inherit; text-decoration: none;">
+					<h3>cacheQueueRetries</h3>
+				</a>
+				<p>• <code>Private</code> <code>Readonly</code> <strong>cacheQueueRetries</strong>: <code>40</code></p>
+				<p>Internal use only.</p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#defined-in-2" id="defined-in-2" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L157">fetchy.ts:157</a></p>
+				<hr>
+				<a href="#cachequeueuid" id="cachequeueuid" style="color: inherit; text-decoration: none;">
+					<h3>cacheQueueUID</h3>
+				</a>
+				<p>• <code>Private</code> <code>Readonly</code> <strong>cacheQueueUID</strong>: <code>&quot;_cacheResponseQueue&quot;</code></p>
+				<p>Internal use only.</p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#defined-in-3" id="defined-in-3" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L152">fetchy.ts:152</a></p>
+				<hr>
+				<a href="#cachestorage" id="cachestorage" style="color: inherit; text-decoration: none;">
+					<h3>cacheStorage</h3>
+				</a>
+				<p>• <code>Private</code> <strong>cacheStorage</strong>: <code>Object</code> = <code>{}</code></p>
+				<p>This variable handles the internal caching storage.</p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#defined-in-4" id="defined-in-4" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L164">fetchy.ts:164</a></p>
+				<hr>
+				<a href="#cacheuid" id="cacheuid" style="color: inherit; text-decoration: none;">
+					<h3>cacheUID</h3>
+				</a>
+				<p>• <code>Private</code> <code>Readonly</code> <strong>cacheUID</strong>: <code>&quot;_cacheResponseData&quot;</code></p>
+				<p>Internal use only.</p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#defined-in-5" id="defined-in-5" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L147">fetchy.ts:147</a></p>
+				<hr>
+				<a href="#config" id="config" style="color: inherit; text-decoration: none;">
+					<h3>config</h3>
+				</a>
+				<p>• <code>Private</code> <strong>config</strong>: <code>FetchyConfig</code></p>
+				<p>This variable represents the internal state of a Fetchy instance. <br>
+				It mutates while you configure your instance, and it&#39;s inherited from its child.</p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#defined-in-6" id="defined-in-6" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L135">fetchy.ts:135</a></p>
+				<a href="#methods-1" id="methods-1" style="color: inherit; text-decoration: none;">
+					<h2>Methods</h2>
+				</a>
+				<a href="#attachself" id="attachself" style="color: inherit; text-decoration: none;">
+					<h3>attachSelf</h3>
+				</a>
+				<p>▸ <code>Private</code> <strong>attachSelf</strong>(<code>response</code>): <code>any</code></p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#parameters-1" id="parameters-1" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>response</code></td>
+							<td align="left"><code>any</code></td>
+						</tr>
+				</tbody></table>
+				<a href="#returns" id="returns" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>any</code></p>
+				<a href="#defined-in-7" id="defined-in-7" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L219">fetchy.ts:219</a></p>
+				<hr>
+				<a href="#cache" id="cache" style="color: inherit; text-decoration: none;">
+					<h3>cache</h3>
+				</a>
+				<p>▸ <strong>cache</strong>(<code>enable</code>): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Enable or disable automatic caching for the current Fetchy instance. <br>
+					Caching is performed automatically when enabled based on the current set of parameters, and automatically handling configuration changes. <br>
+				Any change in the configuration or data payload will generate new calls instead of fetching from the cache.</p>
+				<p><strong><code>cache</code></strong></p>
+				<a href="#parameters-2" id="parameters-2" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>enable</code></td>
+							<td align="left"><code>boolean</code></td>
+							<td align="left">true | false</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-1" id="returns-1" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>the Fetchy class instance</p>
+				<a href="#defined-in-8" id="defined-in-8" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L580">fetchy.ts:580</a></p>
+				<hr>
+				<a href="#call" id="call" style="color: inherit; text-decoration: none;">
+					<h3>call</h3>
+				</a>
+				<p>▸ <code>Private</code> <strong>call</strong>(): <code>Promise</code>&lt;<code>Response</code>&gt;</p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#returns-2" id="returns-2" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>Promise</code>&lt;<code>Response</code>&gt;</p>
+				<a href="#defined-in-9" id="defined-in-9" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L304">fetchy.ts:304</a></p>
+				<hr>
+				<a href="#catch" id="catch" style="color: inherit; text-decoration: none;">
+					<h3>catch</h3>
+				</a>
+				<p>▸ <strong>catch</strong>(<code>fn</code>): <code>any</code></p>
+				<p>Triggers the data fetch and returns the final payload. <br>
+				After this method is invoked is no longer possible to change this instance configuration without cloning it.</p>
+				<p><strong><code>request</code></strong></p>
+				<a href="#parameters-3" id="parameters-3" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>fn</code></td>
+							<td align="left"><code>Function</code></td>
+							<td align="left">A callback function that is invoked with the result of the fetch in case of error</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-3" id="returns-3" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>any</code></p>
+				<p><em>a mutated version</em> of Fetchy class instance that inherits all the properties of a <em>Promise</em>.</p>
+				<a href="#defined-in-10" id="defined-in-10" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L765">fetchy.ts:765</a></p>
+				<hr>
+				<a href="#clearcache" id="clearcache" style="color: inherit; text-decoration: none;">
+					<h3>clearCache</h3>
+				</a>
+				<p>▸ <strong>clearCache</strong>(<code>id?</code>): <code>void</code></p>
+				<p>Allows to clear the cached entries of a specific id or in general.</p>
+				<p><strong><code>cache</code></strong></p>
+				<a href="#parameters-4" id="parameters-4" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>id?</code></td>
+							<td align="left"><code>string</code></td>
+							<td align="left">The id of the cached entity. *optional</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-4" id="returns-4" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>void</code></p>
+				<a href="#defined-in-11" id="defined-in-11" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L612">fetchy.ts:612</a></p>
+				<hr>
+				<a href="#clone" id="clone" style="color: inherit; text-decoration: none;">
+					<h3>clone</h3>
+				</a>
+				<p>▸ <strong>clone</strong>(): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Clones the current instance into a new one, allowing for configuration changes without affecting the original instance.</p>
+				<p><strong><code>utility</code></strong></p>
+				<a href="#returns-5" id="returns-5" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p><em>a new clone</em> of Fetchy class instance that inherits all previous configurations.</p>
+				<a href="#defined-in-12" id="defined-in-12" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L547">fetchy.ts:547</a></p>
+				<hr>
+				<a href="#credentials" id="credentials" style="color: inherit; text-decoration: none;">
+					<h3>credentials</h3>
+				</a>
+				<p>▸ <strong>credentials</strong>(<code>credentials</code>): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Sets the credential mode for the current Fetch instance.</p>
+				<p><strong><code>request</code></strong></p>
+				<a href="#parameters-5" id="parameters-5" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>credentials</code></td>
+							<td align="left"><code>string</code></td>
+							<td align="left">Allowed values: &#39;omit&#39;, &#39;same-origin&#39;, &#39;include&#39;</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-6" id="returns-6" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>the Fetchy class instance</p>
+				<a href="#defined-in-13" id="defined-in-13" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L482">fetchy.ts:482</a></p>
+				<hr>
+				<a href="#data" id="data" style="color: inherit; text-decoration: none;">
+					<h3>data</h3>
+				</a>
+				<p>▸ <strong>data</strong>(<code>data</code>): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Allows to set request payload.</p>
+				<p><strong><code>request</code></strong></p>
+				<a href="#parameters-6" id="parameters-6" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>data</code></td>
+							<td align="left"><code>any</code></td>
+							<td align="left">Allowed formats: Object, Array, String.</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-7" id="returns-7" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p><em>a new clone</em> of Fetchy class instance that inherits all previous configurations.</p>
+				<a href="#defined-in-14" id="defined-in-14" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L445">fetchy.ts:445</a></p>
+				<hr>
+				<a href="#do" id="do" style="color: inherit; text-decoration: none;">
+					<h3>do</h3>
+				</a>
+				<p>▸ <code>Private</code> <strong>do</strong>(): <code>any</code></p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#returns-8" id="returns-8" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>any</code></p>
+				<a href="#defined-in-15" id="defined-in-15" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L228">fetchy.ts:228</a></p>
+				<hr>
+				<a href="#expiry" id="expiry" style="color: inherit; text-decoration: none;">
+					<h3>expiry</h3>
+				</a>
+				<p>▸ <strong>expiry</strong>(<code>minutes</code>): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Sets a time in minutes after which any cached request will be discarded and substituted with a fresh data fetch.</p>
+				<p><strong><code>cache</code></strong></p>
+				<a href="#parameters-7" id="parameters-7" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>minutes</code></td>
+							<td align="left"><code>number</code></td>
+							<td align="left">Timing expressed in minutes</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-9" id="returns-9" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>the Fetchy class instance</p>
+				<a href="#defined-in-16" id="defined-in-16" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L594">fetchy.ts:594</a></p>
+				<hr>
+				<a href="#finally" id="finally" style="color: inherit; text-decoration: none;">
+					<h3>finally</h3>
+				</a>
+				<p>▸ <strong>finally</strong>(<code>fn</code>): <code>any</code></p>
+				<p>Triggers the data fetch and returns the final payload. <br>
+				After this method is invoked is no longer possible to change this instance configuration without cloning it.</p>
+				<p><strong><code>request</code></strong></p>
+				<a href="#parameters-8" id="parameters-8" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>fn</code></td>
+							<td align="left"><code>Function</code></td>
+							<td align="left">A callback function that is invoked with the result of the fetch in either case</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-10" id="returns-10" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>any</code></p>
+				<p><em>a mutated version</em> of Fetchy class instance that inherits all the properties of a <em>Promise</em>.</p>
+				<a href="#defined-in-17" id="defined-in-17" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L777">fetchy.ts:777</a></p>
+				<hr>
+				<a href="#format" id="format" style="color: inherit; text-decoration: none;">
+					<h3>format</h3>
+				</a>
+				<p>▸ <strong>format</strong>(<code>format</code>): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Allows to set fetch expected response format</p>
+				<p><strong><code>request</code></strong></p>
+				<a href="#parameters-9" id="parameters-9" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>format</code></td>
+							<td align="left"><code>string</code></td>
+							<td align="left">Allowed values: &#39;json&#39;, &#39;text&#39;, &#39;blob&#39;</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-11" id="returns-11" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>the Fetchy class instance</p>
+				<a href="#defined-in-18" id="defined-in-18" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L406">fetchy.ts:406</a></p>
+				<hr>
+				<a href="#formatresponse" id="formatresponse" style="color: inherit; text-decoration: none;">
+					<h3>formatResponse</h3>
+				</a>
+				<p>▸ <code>Private</code> <strong>formatResponse</strong>(<code>metaResponse</code>): <code>any</code></p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#parameters-10" id="parameters-10" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>metaResponse</code></td>
+							<td align="left"><code>any</code></td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-12" id="returns-12" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>any</code></p>
+				<a href="#defined-in-19" id="defined-in-19" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L321">fetchy.ts:321</a></p>
+				<hr>
+				<a href="#getcachehash" id="getcachehash" style="color: inherit; text-decoration: none;">
+					<h3>getCacheHash</h3>
+				</a>
+				<p>▸ <code>Private</code> <strong>getCacheHash</strong>(): <code>string</code></p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#returns-13" id="returns-13" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>string</code></p>
+				<a href="#defined-in-20" id="defined-in-20" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L707">fetchy.ts:707</a></p>
+				<hr>
+				<a href="#headers" id="headers" style="color: inherit; text-decoration: none;">
+					<h3>headers</h3>
+				</a>
+				<p>▸ <strong>headers</strong>(<code>headers</code>): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Allows to set headers for the fetch call.</p>
+				<p><strong><code>request</code></strong></p>
+				<a href="#parameters-11" id="parameters-11" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>headers</code></td>
+							<td align="left"><code>any</code></td>
+							<td align="left">Allowed values Array, Object</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-14" id="returns-14" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>the Fetchy class instance</p>
+				<a href="#defined-in-21" id="defined-in-21" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L372">fetchy.ts:372</a></p>
+				<hr>
+				<a href="#id" id="id" style="color: inherit; text-decoration: none;">
+					<h3>id</h3>
+				</a>
+				<p>▸ <strong>id</strong>(<code>id</code>): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Sets a unique id for the current Fetch instance, allowing more clear and debug friendly caching</p>
+				<p><strong><code>cache</code></strong></p>
+				<a href="#parameters-12" id="parameters-12" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>id</code></td>
+							<td align="left"><code>string</code></td>
+							<td align="left">Allowed values: Any unique string</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-15" id="returns-15" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>the Fetchy class instance</p>
+				<a href="#defined-in-22" id="defined-in-22" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L464">fetchy.ts:464</a></p>
+				<hr>
+				<a href="#iscached" id="iscached" style="color: inherit; text-decoration: none;">
+					<h3>isCached</h3>
+				</a>
+				<p>▸ <code>Private</code> <strong>isCached</strong>(): <code>boolean</code></p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#returns-16" id="returns-16" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>boolean</code></p>
+				<a href="#defined-in-23" id="defined-in-23" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L636">fetchy.ts:636</a></p>
+				<hr>
+				<a href="#isinqueue" id="isinqueue" style="color: inherit; text-decoration: none;">
+					<h3>isInQueue</h3>
+				</a>
+				<p>▸ <code>Private</code> <strong>isInQueue</strong>(): <code>boolean</code></p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#returns-17" id="returns-17" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>boolean</code></p>
+				<a href="#defined-in-24" id="defined-in-24" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L741">fetchy.ts:741</a></p>
+				<hr>
+				<a href="#method" id="method" style="color: inherit; text-decoration: none;">
+					<h3>method</h3>
+				</a>
+				<p>▸ <strong>method</strong>(<code>method</code>): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Allows to set a method for the fetch call.</p>
+				<p><strong><code>request</code></strong></p>
+				<a href="#parameters-13" id="parameters-13" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>method</code></td>
+							<td align="left"><code>string</code></td>
+							<td align="left">Allowed values: &#39;GET&#39;, &#39;POST&#39;, &#39;PATCH&#39;, &#39;PUT&#39;, &#39;DELETE&#39;, &#39;OPTIONS&#39;</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-18" id="returns-18" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>the Fetchy class instance</p>
+				<a href="#defined-in-25" id="defined-in-25" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L353">fetchy.ts:353</a></p>
+				<hr>
+				<a href="#mode" id="mode" style="color: inherit; text-decoration: none;">
+					<h3>mode</h3>
+				</a>
+				<p>▸ <strong>mode</strong>(<code>mode</code>): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Sets a mode for the current Fetch instance to handle CORS issues</p>
+				<p><strong><code>request</code></strong></p>
+				<a href="#parameters-14" id="parameters-14" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>mode</code></td>
+							<td align="left"><code>string</code></td>
+							<td align="left">Allowed values: &#39;cors&#39;, &#39;same-origin&#39;, &#39;no-cors&#39;</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-19" id="returns-19" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>the Fetchy class instance</p>
+				<a href="#defined-in-26" id="defined-in-26" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L501">fetchy.ts:501</a></p>
+				<hr>
+				<a href="#override" id="override" style="color: inherit; text-decoration: none;">
+					<h3>override</h3>
+				</a>
+				<p>▸ <strong>override</strong>(<code>config</code>): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Override the current configuration of the Fetchy instance without format restrictions, should not be used.</p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#parameters-15" id="parameters-15" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>config</code></td>
+							<td align="left"><code>any</code></td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-20" id="returns-20" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p><em>a new clone</em> of Fetchy class instance that inherits all previous configurations.</p>
+				<a href="#defined-in-27" id="defined-in-27" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L560">fetchy.ts:560</a></p>
+				<hr>
+				<a href="#refreshcachestorage" id="refreshcachestorage" style="color: inherit; text-decoration: none;">
+					<h3>refreshCacheStorage</h3>
+				</a>
+				<p>▸ <code>Private</code> <strong>refreshCacheStorage</strong>(): <code>void</code></p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#returns-21" id="returns-21" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>void</code></p>
+				<a href="#defined-in-28" id="defined-in-28" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L647">fetchy.ts:647</a></p>
+				<hr>
+				<a href="#retrievecached" id="retrievecached" style="color: inherit; text-decoration: none;">
+					<h3>retrieveCached</h3>
+				</a>
+				<p>▸ <code>Private</code> <strong>retrieveCached</strong>(): <code>Promise</code>&lt;<code>unknown</code>&gt;</p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#returns-22" id="returns-22" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>Promise</code>&lt;<code>unknown</code>&gt;</p>
+				<a href="#defined-in-29" id="defined-in-29" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L656">fetchy.ts:656</a></p>
+				<hr>
+				<a href="#retry" id="retry" style="color: inherit; text-decoration: none;">
+					<h3>retry</h3>
+				</a>
+				<p>▸ <strong>retry</strong>(<code>times</code>, <code>delayMs?</code>): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Allows to set automatic retries in case of fetch failure.</p>
+				<p><strong><code>errorhandling</code></strong></p>
+				<a href="#parameters-16" id="parameters-16" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Default value</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>times</code></td>
+							<td align="left"><code>number</code></td>
+							<td align="left"><code>undefined</code></td>
+							<td align="left">Number of times to retry before considering failed the request</td>
+						</tr>
+						<tr>
+							<td align="left"><code>delayMs</code></td>
+							<td align="left"><code>number</code></td>
+							<td align="left"><code>0</code></td>
+							<td align="left">Time to wait between each try, expressed in ms.</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-23" id="returns-23" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>the Fetchy class instance</p>
+				<a href="#defined-in-30" id="defined-in-30" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L426">fetchy.ts:426</a></p>
+				<hr>
+				<a href="#setqueue" id="setqueue" style="color: inherit; text-decoration: none;">
+					<h3>setQueue</h3>
+				</a>
+				<p>▸ <code>Private</code> <strong>setQueue</strong>(): <code>void</code></p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#returns-24" id="returns-24" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>void</code></p>
+				<a href="#defined-in-31" id="defined-in-31" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L733">fetchy.ts:733</a></p>
+				<hr>
+				<a href="#storecached" id="storecached" style="color: inherit; text-decoration: none;">
+					<h3>storeCached</h3>
+				</a>
+				<p>▸ <code>Private</code> <strong>storeCached</strong>(<code>response</code>): <code>void</code></p>
+				<p><strong><code>internal</code></strong></p>
+				<a href="#parameters-17" id="parameters-17" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>response</code></td>
+							<td align="left"><code>any</code></td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-25" id="returns-25" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>void</code></p>
+				<a href="#defined-in-32" id="defined-in-32" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L691">fetchy.ts:691</a></p>
+				<hr>
+				<a href="#then" id="then" style="color: inherit; text-decoration: none;">
+					<h3>then</h3>
+				</a>
+				<p>▸ <strong>then</strong>(<code>fn</code>): <code>any</code></p>
+				<p>Triggers the data fetch and returns the final payload. <br>
+				After this method is invoked is no longer possible to change this instance configuration without cloning it.</p>
+				<p><strong><code>request</code></strong></p>
+				<a href="#parameters-18" id="parameters-18" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>fn</code></td>
+							<td align="left"><code>Function</code></td>
+							<td align="left">A callback function that is invoked with the result of the fetch in case of success</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-26" id="returns-26" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><code>any</code></p>
+				<p><em>a mutated version</em> of Fetchy class instance that inherits all the properties of a <em>Promise</em>.</p>
+				<a href="#defined-in-33" id="defined-in-33" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L753">fetchy.ts:753</a></p>
+				<hr>
+				<a href="#timeout" id="timeout" style="color: inherit; text-decoration: none;">
+					<h3>timeout</h3>
+				</a>
+				<p>▸ <strong>timeout</strong>(<code>seconds</code>): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Allows to set fetch timeout in seconds.</p>
+				<p><strong><code>errorhandling</code></strong></p>
+				<a href="#parameters-19" id="parameters-19" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>seconds</code></td>
+							<td align="left"><code>number</code></td>
+							<td align="left">Must be a value equal or greater than 1</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-27" id="returns-27" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>the Fetchy class instance</p>
+				<a href="#defined-in-34" id="defined-in-34" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L388">fetchy.ts:388</a></p>
+				<hr>
+				<a href="#validator" id="validator" style="color: inherit; text-decoration: none;">
+					<h3>validator</h3>
+				</a>
+				<p>▸ <strong>validator</strong>(<code>fn</code>): <a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>Sets a validator function to allow or forbid caching of any request coming from this instance. The cache is common among all Fetchy instances <br> Defaults to <b>Ensure that the response is not empty and with status code 200</b>.</p>
+				<p><strong><code>cache</code></strong></p>
+				<a href="#parameters-20" id="parameters-20" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th align="left">Name</th>
+							<th align="left">Type</th>
+							<th align="left">Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td align="left"><code>fn</code></td>
+							<td align="left"><code>any</code></td>
+							<td align="left">Allowed values: &#39;cors&#39;, &#39;same-origin&#39;, &#39;no-cors&#39;</td>
+						</tr>
+				</tbody></table>
+				<a href="#returns-28" id="returns-28" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<p><a href="Fetchy.md"><code>Fetchy</code></a></p>
+				<p>the Fetchy class instance
+					<br>
+				Example validator function:</p>
+				<pre><code><span style="color: #000000">   </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">Helper</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Fetchy</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;/api/v1/:endpoint&quot;</span><span style="color: #000000">)</span>
+<span style="color: #000000">     .</span><span style="color: #795E26">cache</span><span style="color: #000000">(</span><span style="color: #0000FF">true</span><span style="color: #000000">) </span><span style="color: #008000">//Caching must be enabled for validator function to take any effect.</span>
+<span style="color: #000000">     .</span><span style="color: #795E26">validator</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">         </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">response</span><span style="color: #000000"> &amp;&amp; </span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #001080">header</span><span style="color: #000000">.</span><span style="color: #001080">status</span><span style="color: #000000"> === </span><span style="color: #A31515">&quot;OK&quot;</span><span style="color: #000000">;</span>
+<span style="color: #000000">     });</span>
+</code></pre>
+				<a href="#defined-in-35" id="defined-in-35" style="color: inherit; text-decoration: none;">
+					<h4>Defined in</h4>
+				</a>
+				<p><a href="https://github.com/Mango-Design/Fetchy/blob/c7f0ebe/src/ts/fetchy.ts#L530">fetchy.ts:530</a></p>
 			</div>
 			<div></div>
 		</div>

@@ -12,7 +12,6 @@
     "out": "docs",
     "excludeExternals": true,
     "name": "Fetchy",
-    "theme": "assets/ignite_theme",
-    "external": "/index.ts/"
+    "theme": "assets/ignite_theme"
   }
 }
