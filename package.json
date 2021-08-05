@@ -6,7 +6,7 @@
   "repository": {
     "url": "git+https://github.com/devicious/Fetchy.git"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Ivan Sollima <ivan.sollima@gmail.com>",
   "dependencies": {
     "crypto-js": "^4.1.1",
