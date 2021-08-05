@@ -1,4 +1,4 @@
-# Class: Fetchy
+#Fetchy
 
 ### The *Fetchy* class represent an handy and configurable helper that allows to easily interact with remote resources.
 
