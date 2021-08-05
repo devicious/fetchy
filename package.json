@@ -25,7 +25,8 @@
     "build": "webpack --env production",
     "start": "webpack serve --open",
     "watch": "webpack --watch",
-    "docs": "typedoc --plugin none"
+    "docs": "typedoc --plugin none",
+    "markdown":"typedoc --out markdown --theme markdown"
   },
   "bugs": {
     "url": "https://github.com/devicious/Fetchy/issues"
