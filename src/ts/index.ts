@@ -1,2 +1,3 @@
-import {Fetchy} from "./fetchy";
-global.Fetchy = Fetchy;
+import Fetchy from "./fetchy";
+
+export {Fetchy};
