@@ -5,6 +5,10 @@
 Any instance can be configured in many different aspects while enforcing use of correct configuration. <br>
 Leveraging its functionalities it's easy to generate pre-configured instances of any given remote resource, and easily query them with cool features like: automatic error handling, caching, timeouts, etc.
 
+###Installation:
+
+``` npm i @devicious/fetchy ```
+
 ### Example:
 ```
 //Define and configure a new instance of a Fetchy Class
