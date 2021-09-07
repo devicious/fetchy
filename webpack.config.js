@@ -34,8 +34,9 @@ module.exports = env => {
             extensions: ['.tsx', '.ts', '.js'],
         },
         output: {
+            clean: true,
             path: path.resolve(__dirname, 'dist'),
-            filename: 'fetchy.js',
+            filename: 'index.js',
             library: "Fetchy",
             libraryTarget: "umd",
         },
