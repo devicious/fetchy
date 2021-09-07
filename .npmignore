@@ -1,0 +1,6 @@
+.idea/
+assets/
+src/
+.editorconfig
+tsconfig.json
+webpack.config.js
