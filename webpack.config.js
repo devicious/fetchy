@@ -28,7 +28,6 @@ module.exports = env => {
                 }
             ],
         },
-        devtool: env.production ? 'source-map' : 'inline-source-map',
         plugins,
         resolve: {
             extensions: ['.tsx', '.ts', '.js'],

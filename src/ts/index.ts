@@ -1,3 +1,3 @@
-import Fetchy from "./fetchy";
+import {Fetchy} from "./fetchy";
 
-export {Fetchy};
+export default Fetchy;
