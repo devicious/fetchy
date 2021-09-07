@@ -1,12 +1,12 @@
 {
   "name": "@devicious/fetchy",
-  "description": "A library that add super powers to native fetch implementation",
+  "description": "A library that adds super powers to native fetch implementation",
   "type": "commonjs",
-  "main": "fetchy.js",
+  "main": "index.js",
   "repository": {
-    "url": "git+https://github.com/devicious/Fetchy.git"
+    "url": "git+https://github.com/devicious/fetchy.git"
   },
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Ivan Sollima <ivan.sollima@gmail.com>",
   "dependencies": {
     "crypto-js": "^4.1.1"
@@ -27,14 +27,13 @@
   "scripts": {
     "build": "webpack --env production",
     "start": "webpack serve --open",
-    "watch": "webpack --watch",
     "docs": "typedoc --plugin none",
     "markdown": "typedoc --out markdown --theme markdown"
   },
   "bugs": {
-    "url": "https://github.com/devicious/Fetchy/issues"
+    "url": "https://github.com/devicious/fetchy/issues"
   },
-  "homepage": "https://github.com/devicious/Fetchy#readme",
+  "homepage": "https://github.com/devicious/fetchy#readme",
   "directories": {
     "doc": "docs"
   },

@@ -5,12 +5,19 @@
 Any instance can be configured in many different aspects while enforcing use of correct configuration. <br>
 Leveraging its functionalities it's easy to generate pre-configured instances of any given remote resource, and easily query them with cool features like: automatic error handling, caching, timeouts, etc.
 
-###Installation:
 
-``` npm i @devicious/fetchy ```
+### Installation
 
-### Example:
+Using npm:
+```shell
+$ npm i @devicious/fetchy 
 ```
+
+### How to use it:
+```javascript
+//Import the Library
+import Fetchy from "@devicious/fetchy"
+
 //Define and configure a new instance of a Fetchy Class
 const Authors = new Fetchy("/api/v1/authors")
      .method('POST')
@@ -42,11 +49,7 @@ Authors
      });
 ```
 
-**`param`** This parameter is required
-
-**`returns`** a new instance of Fetchy class
-
-## Table of contents
+## Docs
 
 ### Constructors
 
@@ -104,7 +107,7 @@ Authors
 
 ### Basic usage (GET):
 
-```
+```javascript
 const Resource = new Fetchy("/api/v1/:endpoint");
 Resource.then((data) => {
     //...
