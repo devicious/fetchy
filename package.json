@@ -1,13 +1,19 @@
 {
   "name": "@devicious/fetchy",
+  "raw": "@devicious/fetchy",
+  "escapedName": "@devicious%2ffetchy",
   "description": "A library that adds super powers to native fetch implementation",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "dist/fetchy.js",
   "repository": {
+    "type": "git",
     "url": "git+https://github.com/devicious/fetchy.git"
   },
   "version": "0.1.9",
-  "author": "Ivan Sollima <ivan.sollima@gmail.com>",
+  "author": {
+    "name": "Ivan Sollima",
+    "email": "ivan.sollima@gmail.com"
+  },
   "dependencies": {
     "crypto-js": "^4.1.1"
   },
@@ -41,8 +47,10 @@
     "fetch",
     "axios",
     "xhr",
-    "javascript",
-    "typescript"
+    "simple",
+    "lightweight",
+    "fast"
   ],
   "license": "ISC"
 }
+
